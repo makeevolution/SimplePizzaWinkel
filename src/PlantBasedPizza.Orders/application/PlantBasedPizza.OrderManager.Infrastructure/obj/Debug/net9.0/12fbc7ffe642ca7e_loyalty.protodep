@@ -1,0 +1,2 @@
+obj\Debug\net9.0\Protos/Loyalty.cs \
+obj\Debug\net9.0\Protos/LoyaltyGrpc.cs: Protos/loyalty.proto

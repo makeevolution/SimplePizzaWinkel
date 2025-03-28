@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PlantBasedPizza.OrderManager.Infrastructure</name>
+    </assembly>
+    <members>
+        <member name="T:PlantBasedPizza.OrderManager.Infrastructure.LoyaltyReflection">
+            <summary>Holder for reflection information generated from Protos/loyalty.proto</summary>
+        </member>
+        <member name="P:PlantBasedPizza.OrderManager.Infrastructure.LoyaltyReflection.Descriptor">
+            <summary>File descriptor for Protos/loyalty.proto</summary>
+        </member>
+        <member name="F:PlantBasedPizza.OrderManager.Infrastructure.AddLoyaltyPointsRequest.OrderIdentifierFieldNumber">
+            <summary>Field number for the "orderIdentifier" field.</summary>
+        </member>
+        <member name="F:PlantBasedPizza.OrderManager.Infrastructure.AddLoyaltyPointsRequest.CustomerIdentifierFieldNumber">
+            <summary>Field number for the "customerIdentifier" field.</summary>
+        </member>
+        <member name="F:PlantBasedPizza.OrderManager.Infrastructure.AddLoyaltyPointsRequest.OrderValueFieldNumber">
+            <summary>Field number for the "orderValue" field.</summary>
+        </member>
+        <member name="F:PlantBasedPizza.OrderManager.Infrastructure.AddLoyaltyPointsReply.CustomerIdentifierFieldNumber">
+            <summary>Field number for the "customerIdentifier" field.</summary>
+        </member>
+        <member name="F:PlantBasedPizza.OrderManager.Infrastructure.AddLoyaltyPointsReply.TotalPointsFieldNumber">
+            <summary>Field number for the "totalPoints" field.</summary>
+        </member>
+        <member name="F:PlantBasedPizza.OrderManager.Infrastructure.GetCustomerLoyaltyPointsRequest.CustomerIdentifierFieldNumber">
+            <summary>Field number for the "customerIdentifier" field.</summary>
+        </member>
+        <member name="F:PlantBasedPizza.OrderManager.Infrastructure.GetCustomerLoyaltyPointsReply.CustomerIdentifierFieldNumber">
+            <summary>Field number for the "customerIdentifier" field.</summary>
+        </member>
+        <member name="F:PlantBasedPizza.OrderManager.Infrastructure.GetCustomerLoyaltyPointsReply.TotalPointsFieldNumber">
+            <summary>Field number for the "totalPoints" field.</summary>
+        </member>
+        <member name="T:PlantBasedPizza.OrderManager.Infrastructure.Loyalty">
+            <summary>
+            The Loyalty service definition.
+            </summary>
+        </member>
+        <member name="P:PlantBasedPizza.OrderManager.Infrastructure.Loyalty.Descriptor">
+            <summary>Service descriptor</summary>
+        </member>
+        <member name="T:PlantBasedPizza.OrderManager.Infrastructure.Loyalty.LoyaltyClient">
+            <summary>Client for Loyalty</summary>
+        </member>
+        <member name="M:PlantBasedPizza.OrderManager.Infrastructure.Loyalty.LoyaltyClient.#ctor(Grpc.Core.ChannelBase)">
+            <summary>Creates a new client for Loyalty</summary>
+            <param name="channel">The channel to use to make remote calls.</param>
+        </member>
+        <member name="M:PlantBasedPizza.OrderManager.Infrastructure.Loyalty.LoyaltyClient.#ctor(Grpc.Core.CallInvoker)">
+            <summary>Creates a new client for Loyalty that uses a custom <c>CallInvoker</c>.</summary>
+            <param name="callInvoker">The callInvoker to use to make remote calls.</param>
+        </member>
+        <member name="M:PlantBasedPizza.OrderManager.Infrastructure.Loyalty.LoyaltyClient.#ctor">
+            <summary>Protected parameterless constructor to allow creation of test doubles.</summary>
+        </member>
+        <member name="M:PlantBasedPizza.OrderManager.Infrastructure.Loyalty.LoyaltyClient.#ctor(Grpc.Core.ClientBase.ClientBaseConfiguration)">
+            <summary>Protected constructor to allow creation of configured clients.</summary>
+            <param name="configuration">The client configuration.</param>
+        </member>
+        <member name="M:PlantBasedPizza.OrderManager.Infrastructure.Loyalty.LoyaltyClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)">
+            <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
+        </member>
+    </members>
+</doc>

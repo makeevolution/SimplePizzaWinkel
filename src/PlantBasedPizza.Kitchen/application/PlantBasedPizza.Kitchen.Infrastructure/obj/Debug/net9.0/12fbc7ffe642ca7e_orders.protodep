@@ -1,2 +1,0 @@
-obj\Debug\net9.0\Protos/Orders.cs \
-obj\Debug\net9.0\Protos/OrdersGrpc.cs: Protos/orders.proto

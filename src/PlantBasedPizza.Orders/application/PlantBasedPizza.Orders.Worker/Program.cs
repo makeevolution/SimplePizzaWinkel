@@ -45,8 +45,7 @@ builder.Services
     .AddOrderManagerInfrastructure(builder.Configuration)
     .ConfigureAuth(builder.Configuration)
     .AddAuthorization()
-    .AddCaching(builder.Configuration)
-    .AddTemporalWorkflows(builder.Configuration);
+    .AddCaching(builder.Configuration);
 
 builder.Services.AddSingleton<DriverCollectedOrderEventHandler>();
 builder.Services.AddSingleton<DriverDeliveredOrderEventHandler>();

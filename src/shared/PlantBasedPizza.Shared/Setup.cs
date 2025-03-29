@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using OpenTelemetry.Exporter;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using PlantBasedPizza.Shared.Logging;
@@ -12,7 +13,7 @@ namespace PlantBasedPizza.Shared
 {
     public static class Setup
     {
-        private const string OTEL_DEFAULT_GRPC_ENDPOINT = "http://localhost:4317";
+        private const string OTEL_DEFAULT_GRPC_ENDPOINT = "http://seq:5341/ingest/otlp/v1/traces";
         
         public static IServiceCollection AddSharedInfrastructure(this IServiceCollection services,
             IConfiguration configuration, string applicationName, string[]? additionalSources = null)
@@ -57,10 +58,13 @@ namespace PlantBasedPizza.Shared
                         tracing.AddSource(source);
                     }
                 }
-                
+
+                tracing.AddOtlpExporter(); // Add the default localhost:4317
                 tracing.AddOtlpExporter(otlpOptions =>
                 {
-                    otlpOptions.Endpoint = new Uri(configuration["OTEL_EXPORTER_OTLP_ENDPOINT"] ?? OTEL_DEFAULT_GRPC_ENDPOINT);
+                    // Export OTEL also to Seq if the environment variable is set
+                    otlpOptions.Endpoint = new Uri(configuration["OTEL_EXPORTER_SEQ"] ?? OTEL_DEFAULT_GRPC_ENDPOINT);
+                    otlpOptions.Protocol = OtlpExportProtocol.HttpProtobuf;
                 });
             });
             

@@ -86,12 +86,14 @@ public static class OrderEndpoints
     }
 
     public static async Task<IResult> AddItemToOrder(HttpContext httpContext, AddItemToOrderCommand request,
-        [FromServices] AddItemToOrderHandler handler)
+        [FromServices] AddItemToOrderHandler handler, [FromServices] ILogger<CreatePickupOrderCommandHandler> logger)
     {
         try
         {
             request.AddToTelemetry();
             request.CustomerIdentifier = httpContext.User.Claims.ExtractAccountId();
+            logger.LogInformation(
+                $"Adding item to order: {request.OrderIdentifier} for user: {request.CustomerIdentifier}");
 
             var order = await handler.Handle(request);
 

@@ -9,6 +9,7 @@ services:
     environment:
       - DatabaseConnection=mongodb://mongodb:27017
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://jaeger:4317
+      - OTEL_EXPORTER_SEQ=http://seq:5341/ingest/otlp/v1/traces
       - Environment=local
       - REDIS_CONNECTION_STRING=cache:6379
       - CACHE_NAME=orders
@@ -133,117 +134,6 @@ services:
       - "local.orders-worker"
     network_mode: "service:local.orders-worker"
 
-  local.loyalty-api:
-    image: loyalty-api
-    container_name: local.loyalty-api
-    ports:
-      - "5050:8080"
-    environment:
-      - DatabaseConnection=mongodb://mongodb:27017
-      - OTEL_EXPORTER_OTLP_ENDPOINT=http://jaeger:4317
-      - Environment=local
-      - Auth__Issuer=https://plantbasedpizza.com
-      - Auth__Audience=https://plantbasedpizza.com
-      - Auth__Key=This is a sample secret key - please don't use in production environment.'
-      - Messaging__UseAsyncApi=Y
-      - DAPR_HOST=host.docker.internal
-      - DAPR_GRPC_PORT=5101
-    networks:
-      - dapr
-
-  loyaltyapi-dapr:
-    image: "daprio/daprd:edge"
-    command: [
-        "./daprd",
-        "--app-id",
-        "loyalty",
-        "--app-port",
-        "8080",
-        "--placement-host-address",
-        "placement:50006", # Dapr's placement service can be reach via the docker DNS entry
-        "--dapr-grpc-port",
-        "5101",
-        "--resources-path",
-        "./components",
-      ]
-    volumes:
-      - "./components/:/components" # Mount our components folder for the runtime to use. The mounted location must match the --resources-path argument.
-    depends_on:
-      - "local.loyalty-api"
-
-    network_mode: "service:local.loyalty-api"
-
-  local.loyalty-internal-api:
-    image: loyalty-internal-api
-    container_name: local.loyalty-internal-api
-    expose:
-      - "8080"
-    environment:
-      - DatabaseConnection=mongodb://mongodb:27017
-      - OTEL_EXPORTER_OTLP_ENDPOINT=http://jaeger:4317
-      - Environment=local
-      - DAPR_HOST=host.docker.internal
-      - DAPR_GRPC_PORT=5101
-    networks:
-      - dapr
-
-  loyaltyinternal-dapr:
-    image: "daprio/daprd:edge"
-    command: [
-        "./daprd",
-        "--app-id",
-        "loyaltyinternal",
-        "--app-port",
-        "8080",
-        "--placement-host-address",
-        "placement:50006", # Dapr's placement service can be reach via the docker DNS entry
-        "--dapr-grpc-port",
-        "5101",
-        "--resources-path",
-        "./components",
-        "--app-protocol",
-        "grpc",
-      ]
-    volumes:
-      - "./components/:/components" # Mount our components folder for the runtime to use. The mounted location must match the --resources-path argument.
-    depends_on:
-      - "local.loyalty-internal-api"
-
-    network_mode: "service:local.loyalty-internal-api"
-
-  local.loyalty-worker:
-    image: loyalty-worker
-    container_name: local.loyalty-worker
-    environment:
-      - DatabaseConnection=mongodb://mongodb:27017
-      - OTEL_EXPORTER_OTLP_ENDPOINT=http://jaeger:4317
-      - Environment=local
-      - DAPR_HOST=host.docker.internal
-      - DAPR_GRPC_PORT=5101
-    networks:
-      - dapr
-
-  loyaltyworker-dapr:
-    image: "daprio/daprd:edge"
-    command: [
-        "./daprd",
-        "--app-id",
-        "loyaltyworker",
-        "--app-port",
-        "8080",
-        "--placement-host-address",
-        "placement:50006", # Dapr's placement service can be reach via the docker DNS entry
-        "--dapr-grpc-port",
-        "5101",
-        "--resources-path",
-        "./components",
-      ]
-    volumes:
-      - "./components/:/components" # Mount our components folder for the runtime to use. The mounted location must match the --resources-path argument.
-    depends_on:
-      - "local.loyalty-worker"
-
-    network_mode: "service:local.loyalty-worker"
 
   local.kitchen-api:
     image: kitchen-api
@@ -374,6 +264,7 @@ services:
     environment:
       - DatabaseConnection=mongodb://mongodb:27017
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://jaeger:4317
+      - OTEL_EXPORTER_SEQ=http://seq:5341/ingest/otlp/v1/traces
       - Environment=local
       - Messaging__UseAsyncApi=Y
       - Auth__Issuer=https://plantbasedpizza.com
@@ -520,6 +411,12 @@ services:
 
     network_mode: "service:local.account-api"
 
+
+
+
+
+
+
   reverse-proxy:
     image: nginx:latest
     ports:
@@ -533,7 +430,6 @@ services:
       - "local.order-api"
       - "local.kitchen-api"
       - "local.recipe-api"
-      - "local.loyalty-api"
       - "local.account-api"
 
   frontend:

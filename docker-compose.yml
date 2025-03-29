@@ -10,6 +10,19 @@ services:
     networks:
       - dapr
 
+  mongo-express:
+    image: mongo-express
+    container_name: mongodb-express
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://mongodb:27017
+      ME_CONFIG_BASICAUTH: false
+    ports:
+      - "33333:8081"
+    networks:
+      - dapr
+    depends_on:
+      - mongodb
+
   jaeger:
     image: jaegertracing/opentelemetry-all-in-one:latest
     ports:
@@ -27,6 +40,19 @@ services:
     networks:
       - dapr
 
+  seq:
+    image: datalust/seq:latest
+    container_name: seq
+    volumes:
+      - ./.containers/seq:/data
+    environment:
+      - ACCEPT_EULA=Y
+    networks:
+      - dapr
+    ports:
+      - 5341:5341
+      - 7272:80
+        
   postgresql:
     container_name: temporal-postgresql
     environment:
@@ -39,35 +65,6 @@ services:
       - 5432:5432
     volumes:
       - /var/lib/postgresql/data
-
-  temporal:
-    container_name: temporal
-    depends_on:
-      - postgresql
-    environment:
-      - DB=postgres12
-      - DB_PORT=5432
-      - POSTGRES_USER=temporal
-      - POSTGRES_PWD=temporal
-      - POSTGRES_SEEDS=postgresql
-    image: temporalio/auto-setup:1.25.2
-    networks:
-      - dapr
-    ports:
-      - 7233:7233
-
-  temporal-ui:
-    container_name: temporal-ui
-    depends_on:
-      - temporal
-    environment:
-      - TEMPORAL_ADDRESS=temporal:7233
-      - TEMPORAL_CORS_ORIGINS=http://localhost:3000
-    image: temporalio/ui:2.23.0
-    networks:
-      - dapr
-    ports:
-      - 8090:8080
 
   ############################
   # Dapr placement service

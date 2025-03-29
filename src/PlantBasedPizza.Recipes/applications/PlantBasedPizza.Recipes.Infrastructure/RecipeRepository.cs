@@ -1,4 +1,6 @@
-﻿using MongoDB.Driver;
+﻿using System.Diagnostics;
+using Microsoft.Extensions.Logging;
+using MongoDB.Driver;
 using PlantBasedPizza.Recipes.Core.Entities;
 
 namespace PlantBasedPizza.Recipes.Infrastructure;
@@ -6,19 +8,24 @@ namespace PlantBasedPizza.Recipes.Infrastructure;
 public class RecipeRepository : IRecipeRepository
 {
     private readonly IMongoCollection<Recipe> _recipes;
+    private readonly ILogger<RecipeRepository> _logger;
 
-    public RecipeRepository(MongoClient client)
+    public RecipeRepository(MongoClient client, ILogger<RecipeRepository> logger)
     {
         var database = client.GetDatabase("PlantBasedPizza");
         _recipes = database.GetCollection<Recipe>("recipes");
+        _logger = logger;
     }
     
     public async Task<Recipe?> Retrieve(string recipeIdentifier)
     {
+        _logger.LogInformation("RecipeIdentifier: {RecipeIdentifier}", recipeIdentifier);
+        Activity.Current?.AddTag("RecipeIdentifier", recipeIdentifier);
+        _logger.LogInformation("Retrieving recipe {RecipeIdentifier}", recipeIdentifier);
         var queryBuilder = Builders<Recipe>.Filter.Eq(p => p.RecipeIdentifier, recipeIdentifier);
 
         var recipe = await _recipes.Find(queryBuilder).FirstOrDefaultAsync();
-
+        Activity.Current?.AddTag("Recipe: ", recipe);
         return recipe;
     }
 

@@ -1,6 +1,7 @@
 using Dapr.Client;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using PlantBasedPizza.Recipes.Core.Commands;
 using PlantBasedPizza.Recipes.Core.Entities;
 using PlantBasedPizza.Recipes.Core.IntegrationEvents;
@@ -12,11 +13,13 @@ namespace PlantBasedPizza.Recipes.Infrastructure.Controllers
     {
         private readonly IRecipeRepository _recipeRepository;
         private readonly DaprClient _daprClient;
+        private readonly ILogger<RecipeController> _logger;
 
-        public RecipeController(IRecipeRepository recipeRepository,  DaprClient daprClient)
+        public RecipeController(IRecipeRepository recipeRepository,  DaprClient daprClient, ILogger<RecipeController> logger)
         {
             _recipeRepository = recipeRepository;
             _daprClient = daprClient;
+            _logger = logger;
         }
 
         /// <summary>

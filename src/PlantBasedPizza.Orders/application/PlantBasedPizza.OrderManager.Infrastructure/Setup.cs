@@ -118,7 +118,6 @@ public static class Setup
         services.AddSingleton<IOrderRepository, OrderRepository>();
         services.AddSingleton<IDeadLetterRepository, DeadLetterRepository>();
         services.AddSingleton<IRecipeService, RecipeService>();
-        services.AddSingleton<ILoyaltyPointService, LoyaltyPointService>();
         services.AddSingleton<IOrderEventPublisher, OrderEventPublisher>();
         services.AddSingleton<IPaymentService, PaymentService>();
         

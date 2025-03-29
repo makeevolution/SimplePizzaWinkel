@@ -14,7 +14,7 @@ public static class LoggerConfigs
             config.MinimumLevel.Information()
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
                 .Enrich.FromLogContext()
-                .WriteTo.Console(new JsonFormatter());
+                .WriteTo.Console(new JsonFormatter()).WriteTo.Seq("http://seq:5341");
         });
 
         return builder;

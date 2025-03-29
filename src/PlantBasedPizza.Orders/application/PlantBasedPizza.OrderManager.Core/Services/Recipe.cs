@@ -4,7 +4,7 @@ namespace PlantBasedPizza.OrderManager.Core.Services
 {
     public class Recipe
     {
-        [JsonPropertyName("itemName")]
+        [JsonPropertyName("name")]
         public string ItemName { get; init; } = "";
 
         [JsonPropertyName("price")]

@@ -12,9 +12,10 @@ public static class LoggerConfigs
         builder.Host.UseSerilog((_, config) =>
         {
             config.MinimumLevel.Information()
-                .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+                .MinimumLevel.Override("Microsoft", LogEventLevel.Fatal)
                 .Enrich.FromLogContext()
-                .WriteTo.Console(new JsonFormatter()).WriteTo.Seq("http://seq:5341");
+                .WriteTo.Console(new JsonFormatter())
+                .WriteTo.Seq("http://seq:5341");
         });
 
         return builder;

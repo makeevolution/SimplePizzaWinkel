@@ -4,7 +4,7 @@ using FastEndpoints;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using PlantBasedPizza.Account.Api.Configurations;
-using PlantBasedPizza.Account.Api.Core;
+using PlantBasedPizza.Account.Core.Interfaces;
 using PlantBasedPizza.Shared;
 using PlantBasedPizza.Shared.Logging;
 using Serilog;

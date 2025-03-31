@@ -27,7 +27,7 @@ import { NotificationHub } from "./SignalR";
 function Home() {
   const [menuItems, setMenuItems] = useState({});
   const [order, setOrder] = useState({ items: [] });
-  const [open, setOpen] = React.useState(false);
+  const [orderSummaryOpen, setOrderSummaryOpen] = React.useState(false);
   const [snackbarOpen, setSnackbarOpen] = React.useState(false);
   const [snackbarContents, setSnackbarContents] = React.useState("");
   const [isLoading, setIsLoading] = useState(true);
@@ -50,7 +50,7 @@ function Home() {
       return;
     }
 
-    setOpen(inOpen);
+    setOrderSummaryOpen(inOpen);
   };
 
   useEffect(() => {
@@ -163,16 +163,17 @@ function Home() {
               justifyContent="center"
               alignItems="center"
               minHeight={"100vh"}
+              maxWidth={"100vw"}
             >
               <Typography
-                sx={{ fontSize: "5rem", fontWeight: "700", lineHeight: "1" }}
+                  sx={{fontSize: "5rem", fontWeight: "700", lineHeight: "1", fontFamily: "Roboto"}}
               >
-                Italian Pizza.
-                <br />
-                Plant Based.
-                <br />
-                <br />
-                Simple.
+                Simple Pizza winkel
+                <br/>
+                <br/>
+                Lekker pizza!
+                <br/>
+                Snel gemaakt! Smaakt goed!
               </Typography>
             </Grid>
           </Grid>
@@ -190,8 +191,9 @@ function Home() {
             {snackbarContents}
           </Snackbar>
         </Box>
+        {/* This defines the drawer that will open on orderSummaryOpen state being true */}
         <Drawer
-          open={open}
+          open={orderSummaryOpen}
           onClose={toggleDrawer(false)}
           size="md"
           anchor="right"
@@ -308,89 +310,12 @@ function Home() {
                   </div>
                 ))}
               </Grid>
-            ) : (
-              <Grid item xs={10}>
-                <div>
-                  <Grid container spacing={4}>
-                    <Grid item xs={12} sm={6} md={4}>
-                      <Card
-                        sx={{
-                          maxWidth: "100%",
-                          boxShadow: "md",
-                          height: "100%",
-                        }}
-                      >
-                        <AspectRatio ratio="21/9">
-                          <Skeleton variant="overlay">
-                            <img
-                              alt=""
-                              src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                            />
-                          </Skeleton>
-                        </AspectRatio>
-                        <Typography>
-                          <Skeleton>
-                            Lorem ipsum is placeholder text commonly used in the
-                            graphic, print, and publishing industries.
-                          </Skeleton>
-                        </Typography>
-                      </Card>
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={4}>
-                      <Card
-                        sx={{
-                          maxWidth: "100%",
-                          boxShadow: "md",
-                          height: "100%",
-                        }}
-                      >
-                        <AspectRatio ratio="21/9">
-                          <Skeleton variant="overlay">
-                            <img
-                              alt=""
-                              src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                            />
-                          </Skeleton>
-                        </AspectRatio>
-                        <Typography>
-                          <Skeleton>
-                            Lorem ipsum is placeholder text commonly used in the
-                            graphic, print, and publishing industries.
-                          </Skeleton>
-                        </Typography>
-                      </Card>
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={4}>
-                      <Card
-                        sx={{
-                          maxWidth: "100%",
-                          boxShadow: "md",
-                          height: "100%",
-                        }}
-                      >
-                        <AspectRatio ratio="21/9">
-                          <Skeleton variant="overlay">
-                            <img
-                              alt=""
-                              src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                            />
-                          </Skeleton>
-                        </AspectRatio>
-                        <Typography>
-                          <Skeleton>
-                            Lorem ipsum is placeholder text commonly used in the
-                            graphic, print, and publishing industries.
-                          </Skeleton>
-                        </Typography>
-                      </Card>
-                    </Grid>
-                  </Grid>
-                </div>
-              </Grid>
-            )}
+            ) : null}
           </Grid>
         </Container>
       </Box>
+      
+      {/* This defines the shopping card icon, if there is an item in the order */}
       {order.orderNumber === undefined ? (
         <div></div>
       ) : (

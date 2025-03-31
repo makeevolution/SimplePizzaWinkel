@@ -15,7 +15,7 @@ public class OrderRepository : IOrderRepository
     public OrderRepository(MongoClient client, IDistributedCache cache)
     {
         _cache = cache;
-        var database = client.GetDatabase("PlantBasedPizza");
+        var database = client.GetDatabase("SimplePizzaWinkel");
         _orders = database.GetCollection<Order>("orders");
         _outboxItems = database.GetCollection<OutboxItem>("orders_outboxitems");
     }

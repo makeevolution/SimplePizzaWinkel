@@ -13,7 +13,7 @@ namespace PlantBasedPizza.Deliver.Infrastructure
 
         public DeliveryRequestRepository(MongoClient client)
         {
-            var database = client.GetDatabase("PlantBasedPizza");
+            var database = client.GetDatabase("SimplePizzaWinkel");
             _collection = database.GetCollection<DeliveryRequest>("DeliveryRequests");
             _outboxItems = database.GetCollection<OutboxItem>("DeliveryRequests_outboxitems");
         }

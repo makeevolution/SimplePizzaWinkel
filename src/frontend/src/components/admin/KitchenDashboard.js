@@ -14,7 +14,7 @@ import Table from "@mui/joy/Table";
 import Moment from "moment";
 import { kitchenApi } from "../../axiosConfig";
 import { useNavigate } from "react-router-dom";
-
+import authService from "../../services/authService"
 function KitchenDashboard() {
   const [newOrders, setNewOrders] = useState([]);
   const [preparingOrders, setPreparingOrders] = useState([]);
@@ -30,10 +30,8 @@ function KitchenDashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const staffToken = localStorage.getItem("staffToken");
-
-    if (staffToken === undefined || staffToken === null) {
-      navigate("/admin/login");
+    if (!authService.isAdmin()) { 
+      navigate("/login");
     }
 
     const fetchData = async () => {

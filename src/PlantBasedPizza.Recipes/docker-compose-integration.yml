@@ -8,8 +8,8 @@ services:
       - DatabaseConnection=mongodb://mongodb:27017
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://jaeger:4317
       - Environment=local
-      - Auth__Issuer=https://plantbasedpizza.com
-      - Auth__Audience=https://plantbasedpizza.com
+      - Auth__Issuer=https://simplepizzawinkel.com
+      - Auth__Audience=https://simplepizzawinkel.com
       - Auth__Key=This is a sample secret key - please don't use in production environment.'
       - DAPR_HOST=host.docker.internal
       - DAPR_GRPC_PORT=5101

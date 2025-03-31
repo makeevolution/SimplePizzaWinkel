@@ -5,6 +5,7 @@ import {
   Box,
   Typography,
   Input,
+    Snackbar,
   Button,
   CssBaseline,
   Alert,
@@ -19,8 +20,18 @@ function Register() {
   const [emailAddress, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
   const navigate = useNavigate();
+  const [snackbarContent, setSnackbarContent] = useState("");
 
+  const triggerSnackbarOpen = (snackbarContent) =>{
+    setSnackbarContent(snackbarContent)
+    setSnackbarOpen(true);
+  }
+  const handleSnackbarClose = () => {
+    setSnackbarContent("")
+    setSnackbarOpen(false);
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -28,7 +39,10 @@ function Register() {
         "/register",
         { emailAddress, password }
       );
-      navigate("/login"); // Navigate to the home page after successful register
+      triggerSnackbarOpen("Registration successful; redirecting to login page");
+      setTimeout(() => {
+        navigate("/login");
+      }, 3000); // Navigate to the login page after 3 seconds
     } catch (err) {
       setError(
         "Registration failed. Please check your credentials and try again."
@@ -37,7 +51,9 @@ function Register() {
   };
 
   return (
+
     <Box component="section" height={"100vh"} width={"100vw"}>
+      
       <Grid container spacing={2}>
         <Grid
           xs={12}
@@ -84,9 +100,20 @@ function Register() {
             <Button type="submit" fullWidth sx={{ mt: 3, mb: 2 }}>
               Register
             </Button>
+              <Snackbar
+                  autoHideDuration={2000}
+                  variant="solid"
+                  color="success"
+                  anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                  open={snackbarOpen}
+                  onClose={handleSnackbarClose}
+              >
+                { snackbarContent }
+              </Snackbar>
           </Box>
         </Grid>
       </Grid>
+
     </Box>
   );
 }

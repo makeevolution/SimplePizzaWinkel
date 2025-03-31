@@ -20,6 +20,8 @@ using Serilog;
 using Serilog.Events;
 using Serilog.Extensions.Logging;
 using Serilog.Formatting.Json;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 builder
@@ -55,6 +57,7 @@ builder.Services.AddOrderManagerInfrastructure(builder.Configuration)
         , "OrdersService");
 
 builder.Services.AddHttpClient()
+    .RemoveAll<IHttpMessageHandlerBuilderFilter>()
     .AddHealthChecks()
     .AddCheck<LoyaltyServiceHealthChecks>("LoyaltyService")
     .AddCheck<RecipeServiceHealthCheck>("RecipeService")

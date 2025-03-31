@@ -13,7 +13,7 @@ public class KitchenRequestRepository : IKitchenRequestRepository
 
     public KitchenRequestRepository(MongoClient client)
     {
-        var database = client.GetDatabase("PlantBasedPizza");
+        var database = client.GetDatabase("SimplePizzaWinkel");
         _kitchenRequests = database.GetCollection<KitchenRequest>("kitchen");
         _outboxItems = database.GetCollection<OutboxItem>("kitchen_outboxitems");
     }

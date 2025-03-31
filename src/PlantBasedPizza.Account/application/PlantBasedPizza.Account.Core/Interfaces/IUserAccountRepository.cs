@@ -1,4 +1,6 @@
-namespace PlantBasedPizza.Account.Api.Core;
+using PlantBasedPizza.Account.Core.Entities;
+
+namespace PlantBasedPizza.Account.Core.Interfaces;
 
 public interface IUserAccountRepository
 {

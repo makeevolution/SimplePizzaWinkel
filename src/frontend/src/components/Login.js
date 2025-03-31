@@ -6,8 +6,10 @@ import {
   Button,
   FormControl,
   Grid,
+  Alert,
 } from "@mui/joy";
 import { accountApi } from "../axiosConfig";
+import authService from "../services/authService";
 
 function Login() {
   const [emailAddress, setEmail] = useState("");
@@ -28,7 +30,12 @@ function Login() {
       console.log(token);
 
       localStorage.setItem("token", token); // Save the token in localStorage
-      navigate("/"); // Navigate to the home page after successful login
+      if (authService.isAdmin()) {
+        navigate("/admin/kitchen");
+      }
+      else {
+        navigate("/"); // Navigate to the home page after successful login
+      }
     } catch (err) {
       console.log(err);
       setError("Login failed. Please check your credentials and try again.");
@@ -51,6 +58,11 @@ function Login() {
             noValidate
             sx={{ mt: 1 }}
           >
+            {error && (
+                <Alert severity="error" sx={{ mb: 2 }}>
+                  {error}
+                </Alert>
+            )}
             <FormControl required id="emailAddress">
               <Input
                 placeholder="Email Address"

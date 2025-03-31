@@ -32,17 +32,17 @@ ordersApi.interceptors.request.use((config) => {
 });
 
 kitchenApi.interceptors.request.use((config) => {
-  const staffToken = localStorage.getItem("staffToken");
-  if (staffToken) {
-    config.headers.Authorization = `Bearer ${staffToken}`;
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
   }
   return config;
 });
 
 ordersAdminApi.interceptors.request.use((config) => {
-  const staffToken = localStorage.getItem("staffToken");
-  if (staffToken) {
-    config.headers.Authorization = `Bearer ${staffToken}`;
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
   }
   return config;
 });

@@ -12,8 +12,8 @@ services:
       - CACHE_NAME=kitchen
       - Environment=local
       - Services__Recipes=recipes
-      - Auth__Issuer=https://plantbasedpizza.com
-      - Auth__Audience=https://plantbasedpizza.com
+      - Auth__Issuer=https://simplepizzawinkel.com
+      - Auth__Audience=https://simplepizzawinkel.com
       - Auth__Key=This is a sample secret key - please don't use in production environment.'
 
   kitchen-api-dapr:

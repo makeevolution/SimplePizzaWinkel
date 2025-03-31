@@ -15,7 +15,7 @@ public class DeadLetterRepository : IDeadLetterRepository
 
     public DeadLetterRepository(MongoClient client)
     {
-        var database = client.GetDatabase("PlantBasedPizza");
+        var database = client.GetDatabase("SimplePizzaWinkel");
         _deadLetters = database.GetCollection<DeadLetterMessage>("orders_deadletters");
     }
 

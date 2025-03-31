@@ -2,6 +2,8 @@ using Grpc.Core;
 using Grpc.Net.Client.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Http;
 using MongoDB.Driver;
 using PlantBasedPizza.Kitchen.Core.Entities;
 using PlantBasedPizza.Kitchen.Core.Services;
@@ -43,7 +45,7 @@ namespace PlantBasedPizza.Kitchen.Infrastructure
             services.AddHttpClient("retry-http-client")
                 .SetHandlerLifetime(TimeSpan.FromMinutes(5))
                 .AddPolicyHandler(GetRetryPolicy());
-            
+            services.RemoveAll<IHttpMessageHandlerBuilderFilter>();
             // Add default gRPC retries
             var defaultMethodConfig = new MethodConfig
             {

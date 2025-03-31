@@ -1,8 +1,10 @@
 using FastEndpoints;
 using Microsoft.AspNetCore.Authorization;
-using PlantBasedPizza.Account.Api.Core;
+using PlantBasedPizza.Account.Core.Entities;
+using PlantBasedPizza.Account.Core.Exceptions;
+using PlantBasedPizza.Account.Infrastructure.Services;
 
-namespace PlantBasedPizza.Account.Api;
+namespace PlantBasedPizza.Account.Api.Endpoints;
 
 [HttpPost("/login")]
 [AllowAnonymous]

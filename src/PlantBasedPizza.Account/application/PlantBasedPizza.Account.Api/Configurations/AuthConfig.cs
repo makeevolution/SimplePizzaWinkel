@@ -1,6 +1,7 @@
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using PlantBasedPizza.Account.Infrastructure.Configuration;
 
 namespace PlantBasedPizza.Account.Api.Configurations;
 

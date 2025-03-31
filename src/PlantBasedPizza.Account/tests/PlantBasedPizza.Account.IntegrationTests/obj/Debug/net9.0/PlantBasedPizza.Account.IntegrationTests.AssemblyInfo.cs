@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PlantBasedPizza.Account.IntegrationTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+deb49ee494b1bbf833cdad4b54bb4b6a62a5c8ba")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+de4f4959c7d942a6119a5018f81b9eef936426b9")]
 [assembly: System.Reflection.AssemblyProductAttribute("PlantBasedPizza.Account.IntegrationTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PlantBasedPizza.Account.IntegrationTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

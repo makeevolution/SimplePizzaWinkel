@@ -16,7 +16,7 @@ import Table from "@mui/joy/Table";
 import Moment from "moment";
 import { ordersAdminApi } from "../../axiosConfig";
 import { useNavigate } from "react-router-dom";
-
+import authService from "../../services/authService";
 function CollectionDashboard() {
   const [collectionOrders, setCollectionOrders] = useState([]);
   const navigate = useNavigate();
@@ -26,10 +26,8 @@ function CollectionDashboard() {
     setSnackbarOpen(false);
   };
   useEffect(() => {
-    const staffToken = localStorage.getItem("staffToken");
-
-    if (staffToken === undefined || staffToken === null) {
-      navigate("/admin/login");
+    if (!authService.isAdmin()) {
+      navigate("/login");
     }
 
     const fetchData = async () => {

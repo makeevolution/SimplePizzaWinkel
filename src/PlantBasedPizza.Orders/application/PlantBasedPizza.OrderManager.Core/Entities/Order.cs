@@ -200,7 +200,7 @@ namespace PlantBasedPizza.OrderManager.Core.Entities
                 return;
             }
             
-            AddHistory($"Payment taken for {paymentAmount}!");
+            AddHistory($"Payment successfully received and processed by bank!");
             AddHistory("Order confirmed");
             
             addEvent(new OrderConfirmedEventV1()

@@ -24,7 +24,14 @@ function OrderDetail(props) {
     setSnackbarContents(message);
     setSnackbarOpen(true);
   });
-
+  const triggerSnackbarOpen = (snackbarContents) =>{
+    setSnackbarContents(snackbarContents)
+    setSnackbarOpen(true);
+  };
+  const handleSnackbarClose = () => {
+    setSnackbarContents("")
+    setSnackbarOpen(false);
+  };
   useEffect(() => {
     // Replace with your actual endpoint
     const fetchData = async () => {
@@ -40,17 +47,22 @@ function OrderDetail(props) {
   }, []);
 
   async function cancelOrder(order) {
-    await ordersApi.post(`/${order.orderIdentifier}/cancel`, {
-      orderIdentifier: order.orderIdentifier,
-    });
+    try {
+      const response = await ordersApi.post(`/${order.orderIdentifier}/cancel`, {
+        orderIdentifier: order.orderIdentifier,
+      });
+    }
+    catch (error){
+      console.log(error)
+        if (error.response.status == 400) {
+          triggerSnackbarOpen("This order is not cancellable anymore!")
+        }
+        return;
+      }
     setSnackbarContents('Cancellation requested');
     setSnackbarOpen(true);
   }
 
-  const handleSnackbarClose = () => {
-    setSnackbarContents("");
-    setSnackbarOpen(false);
-  };
 
   return (
     <div>

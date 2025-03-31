@@ -1,13 +1,14 @@
 using FastEndpoints;
 using Microsoft.AspNetCore.Authorization;
-using PlantBasedPizza.Account.Api.Core;
+using PlantBasedPizza.Account.Core.Entities;
+using PlantBasedPizza.Account.Core.Exceptions;
+using PlantBasedPizza.Account.Infrastructure.Services;
 
-namespace PlantBasedPizza.Account.Api;
+namespace PlantBasedPizza.Account.Api.Endpoints;
 
-[HttpPost("/driver/register")]
+[HttpPost("/register")]
 [AllowAnonymous]
-[Authorize(Roles = "admin,staff")]
-public class RegisterDriverEndpoint(UserAccountService userAccountService, ILogger<RegisterDriverEndpoint> logger)
+public class RegisterUserEndpoint(UserAccountService userAccountService, ILogger<RegisterStaffEndpoint> logger)
     : Endpoint<RegisterUserCommand, RegisterResponse?>
 {
     public override async Task<RegisterResponse?> HandleAsync(
@@ -16,7 +17,7 @@ public class RegisterDriverEndpoint(UserAccountService userAccountService, ILogg
     {
         try
         {
-            var registerResponse = await userAccountService.Register(request, AccountType.Driver);
+            var registerResponse = await userAccountService.Register(request, AccountType.User);
 
             Response = registerResponse;
             return registerResponse;

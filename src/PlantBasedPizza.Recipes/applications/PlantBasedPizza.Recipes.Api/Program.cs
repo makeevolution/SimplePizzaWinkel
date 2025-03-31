@@ -2,7 +2,9 @@ using System.Text;
 using System.Text.Json;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Http;
 using Microsoft.IdentityModel.Tokens;
 using PlantBasedPizza.Recipes.Core.Entities;
 using PlantBasedPizza.Recipes.Infrastructure;
@@ -40,7 +42,7 @@ var applicationName = "RecipesApi";
 builder.Services.AddRecipeInfrastructure(builder.Configuration);
 builder.Services.AddSharedInfrastructure(builder.Configuration, applicationName);
 
-builder.Services.AddHttpClient();
+builder.Services.AddHttpClient().RemoveAll<IHttpMessageHandlerBuilderFilter>();
 builder.Services.AddHealthChecks()
     .AddMongoDb(builder.Configuration["DatabaseConnection"]);
 builder.Services.AddControllers();

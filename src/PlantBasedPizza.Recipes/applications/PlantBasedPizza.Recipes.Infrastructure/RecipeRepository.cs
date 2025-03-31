@@ -12,7 +12,7 @@ public class RecipeRepository : IRecipeRepository
 
     public RecipeRepository(MongoClient client, ILogger<RecipeRepository> logger)
     {
-        var database = client.GetDatabase("PlantBasedPizza");
+        var database = client.GetDatabase("SimplePizzaWinkel");
         _recipes = database.GetCollection<Recipe>("recipes");
         _logger = logger;
     }

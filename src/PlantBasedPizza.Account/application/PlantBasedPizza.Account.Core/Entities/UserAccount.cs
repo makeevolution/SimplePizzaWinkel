@@ -2,8 +2,9 @@ using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
+using PlantBasedPizza.Account.Core.Exceptions;
 
-namespace PlantBasedPizza.Account.Api.Core;
+namespace PlantBasedPizza.Account.Core.Entities;
 
 public enum AccountType
 {
@@ -11,12 +12,6 @@ public enum AccountType
     Staff,
     Admin,
     Driver
-}
-
-public enum AccountTier
-{
-    Std,
-    Premium
 }
 
 public class UserAccount
@@ -40,7 +35,6 @@ public class UserAccount
             Password = HashPassword(password),
             AccountType = accountType,
             DateCreated = DateTime.UtcNow,
-            AccountTier = AccountTier.Std
         };    
     }
     
@@ -53,8 +47,6 @@ public class UserAccount
     public int AccountAge => (DateTime.UtcNow - this.DateCreated).Days;
     
     public DateTime DateCreated { get; set; }
-    
-    public AccountTier AccountTier { get; set; }
     
     public AccountType AccountType { get; set; }
 

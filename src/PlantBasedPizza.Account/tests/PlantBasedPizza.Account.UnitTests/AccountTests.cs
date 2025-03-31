@@ -1,4 +1,9 @@
 using Microsoft.Extensions.Options;
+using PlantBasedPizza.Account.Core.Entities;
+using PlantBasedPizza.Account.Core.Exceptions;
+using PlantBasedPizza.Account.Core.Interfaces;
+using PlantBasedPizza.Account.Infrastructure.Configuration;
+using PlantBasedPizza.Account.Infrastructure.Services;
 
 namespace PlantBasedPizza.Account.UnitTests;
 
@@ -67,7 +72,7 @@ public class AccountTests
     [Fact]
     public async Task CanRegisterNewStaffAccount_ShouldAllowRegisterWithValidDetails()
     {
-        var testEmailAddress = "test@plantbasedpizza.com";
+        var testEmailAddress = "test@simplepizzawinkel.com";
         var testPassword = "Password!234";
         var testAccountId = "1234";
         

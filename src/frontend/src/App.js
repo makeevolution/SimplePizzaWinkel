@@ -25,10 +25,9 @@ import { Drawer } from "@mui/joy";
 import { datadogRum } from "@datadog/browser-rum";
 import Register from "./components/Register";
 import { MenuBook, Menu } from "@mui/icons-material";
-import AdminLogin from "./components/admin/AdminLogin";
 import KitchenDashboard from "./components/admin/KitchenDashboard";
 import CollectionDashboard from "./components/admin/CollectionDashboard";
-
+import authService from "./services/authService";
 function App() {
   const [open, setOpen] = React.useState(false);
 
@@ -45,8 +44,8 @@ function App() {
 
   extendTheme({
     fontFamily: {
-      display: "Oxygen", // applies to `h1`–`h4`
-      body: "Oxygen", // applies to `title-*` and `body-*`
+      display: "Roboto", // applies to `h1`–`h4`
+      body: "Roboto", // applies to `title-*` and `body-*`
     },
   });
 
@@ -87,14 +86,13 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/orders/:orderNumber" element={<OrderDetail />} />
-            <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin/kitchen" element={<KitchenDashboard />} />
             <Route path="/admin/collection" element={<CollectionDashboard />} />
           </Routes>
           <Box sx={{ bgcolor: "background.paper", pb: 4 }} component="footer">
             <Container maxWidth="lg">
               <Typography variant="h6" align="center" gutterBottom>
-                Plant Based Pizza
+                Simple Pizza winkel
               </Typography>
               <Typography
                 variant="subtitle1"
@@ -102,17 +100,11 @@ function App() {
                 color="text.secondary"
                 component="p"
               >
-                Italian Pizza. Plant Based. Simple.
+                Lekker pizza; snel gemaakt; smaakt goed
               </Typography>
               <Box sx={{ mt: 2, display: "flex", justifyContent: "center" }}>
-                <Link href="https://www.flaticon.com/free-icons/pizza" variant="body2" sx={{ mx: 2 }}>
-                  Pizza icons created by Pause08 - Flaticon | 
-                </Link>
-                <Link href="https://unsplash.com/photos/pizza-with-green-leaves-on-white-ceramic-plate-FZTwpjRUr38" variant="body2" sx={{ mx: 2 }}>
-                  Pizza image attribution - Unsplash | 
-                </Link>
-                <Link href="https://unsplash.com/photos/french-fries-vi0kZuoe0-8" variant="body2" sx={{ mx: 2 }}>
-                  Fries image attribution - Unsplash
+                <Link href="https://www.aldosebastian.com" variant="body2" sx={{ mx: 2 }}>
+                  aldosebastian.com
                 </Link>
               </Box>
             </Container>
@@ -156,8 +148,22 @@ function App() {
               >
                 Orders
               </ListItemButton>
+              {authService.isAdmin() ? (
+                      <ListItemButton
+                          onClick={() => (window.location.href = "/admin/kitchen")}
+                      >
+                        Inspect Kitchen
+                      </ListItemButton>
+                  ) : null}
+              {authService.isAdmin() ? (
+                  <ListItemButton
+                      onClick={() => (window.location.href = "/admin/collection")}
+                  >
+                    Inspect Orders Awaiting Collection
+                  </ListItemButton>
+              ) : null}
               <Divider />
-              {localStorage.getItem("token") === "undefined" ? (
+              {localStorage.getItem("token") == null ? (
                 <ListItemButton
                   onClick={() => (window.location.href = "/login")}
                 >
@@ -166,8 +172,7 @@ function App() {
               ) : (
                 <ListItemButton
                   onClick={() => {
-                    console.log(localStorage.getItem("token"));
-                    localStorage.setItem("token", undefined);
+                    localStorage.removeItem("token");
                     window.location.href = "/";
                   }}
                 >

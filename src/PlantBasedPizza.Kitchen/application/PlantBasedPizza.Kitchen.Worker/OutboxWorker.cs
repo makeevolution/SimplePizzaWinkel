@@ -19,7 +19,7 @@ public class OutboxWorker : BackgroundService
         _logger = logger;
         _eventPublisher = eventPublisher;
         _source = new ActivitySource(ApplicationDefaults.ServiceName);
-        var database = client.GetDatabase("PlantBasedPizza");
+        var database = client.GetDatabase("SimplePizzaWinkel");
         _outboxItems = database.GetCollection<OutboxItem>("kitchen_outboxitems");
     }
     

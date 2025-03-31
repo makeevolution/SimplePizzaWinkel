@@ -4,6 +4,8 @@ using Grpc.Net.Client.Configuration;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Http;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using PlantBasedPizza.OrderManager.Core.AddItemToOrder;
@@ -138,7 +140,7 @@ public static class Setup
         services.AddHttpClient("retry-http-client")
             .SetHandlerLifetime(TimeSpan.FromMinutes(5))
             .AddPolicyHandler(GetRetryPolicy());
-
+        services.RemoveAll<IHttpMessageHandlerBuilderFilter>();
         services.AddLogging();
 
         services.AddDaprClient();

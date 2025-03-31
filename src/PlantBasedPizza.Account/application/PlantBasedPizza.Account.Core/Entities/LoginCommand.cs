@@ -1,6 +1,6 @@
-namespace PlantBasedPizza.Account.Api.Core;
+namespace PlantBasedPizza.Account.Core.Entities;
 
-public class RegisterUserCommand
+public class LoginCommand
 {
     public string EmailAddress { get; set; } = string.Empty;
     

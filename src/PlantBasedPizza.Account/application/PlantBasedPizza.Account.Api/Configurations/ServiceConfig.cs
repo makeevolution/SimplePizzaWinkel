@@ -1,7 +1,10 @@
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
-using PlantBasedPizza.Account.Api.Adapters;
-using PlantBasedPizza.Account.Api.Core;
+using PlantBasedPizza.Account.Core;
+using PlantBasedPizza.Account.Core.Entities;
+using PlantBasedPizza.Account.Core.Interfaces;
+using PlantBasedPizza.Account.Infrastructure.Repositories;
+using PlantBasedPizza.Account.Infrastructure.Services;
 
 namespace PlantBasedPizza.Account.Api.Configurations;
 

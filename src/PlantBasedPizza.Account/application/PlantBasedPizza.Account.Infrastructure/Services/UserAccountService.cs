@@ -5,8 +5,12 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using PlantBasedPizza.Account.Core.Entities;
+using PlantBasedPizza.Account.Core.Exceptions;
+using PlantBasedPizza.Account.Core.Interfaces;
+using PlantBasedPizza.Account.Infrastructure.Configuration;
 
-namespace PlantBasedPizza.Account.Api.Core;
+namespace PlantBasedPizza.Account.Infrastructure.Services;
 
 public class UserAccountService
 {
@@ -35,12 +39,10 @@ public class UserAccountService
                 new Claim(JwtRegisteredClaimNames.Email, account.EmailAddress),
                 new Claim(ClaimTypes.Role, account.AsAuthenticatedRole()),
                 new Claim("UserType", account.AccountType.ToString()),
-                new Claim("UserTier", account.AccountTier.ToString()),
                 new Claim("AccountAge", account.AccountAge.ToString(CultureInfo.InvariantCulture)),
             };
             
             Activity.Current?.AddTag("user.type", account.AccountType.ToString());
-            Activity.Current?.AddTag("user.tier", account.AccountTier.ToString());
             Activity.Current?.AddTag("user.account_age", account.AccountAge);
         
             var tokenDescriptor = new SecurityTokenDescriptor
@@ -87,7 +89,7 @@ public class UserAccountService
                     userAccount = UserAccount.Create(request.EmailAddress, request.Password, AccountType.Driver);
                     break;
                 case AccountType.Staff:
-                    if (!request.EmailAddress.EndsWith("@plantbasedpizza.com"))
+                    if (!request.EmailAddress.EndsWith("@simplepizzawinkel.com"))
                     {
                         throw new InvalidUserException("Not a valid staff email");
                     }

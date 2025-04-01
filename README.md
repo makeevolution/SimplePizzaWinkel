@@ -125,11 +125,9 @@ This will run the individual microservice locally.
         Message Bus (e.g., Redis, Kafka)
            |
            v
-        Dapr Sidecar (Monitors Message Bus)
+        Dapr Sidecar (Monitors Message Bus, )
            |
            v
         HTTP Endpoint in Application (Processes Message)
 		
       In the `make` command of the sidecar there is `--resources-path`; it is where this `configuration` is used.
-
-## OpenTelemetry

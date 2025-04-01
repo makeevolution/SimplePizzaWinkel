@@ -126,7 +126,7 @@ static Task WriteHealthCheckResponse(HttpContext context, HealthReport healthRep
         jsonWriter.WriteEndObject();
         jsonWriter.WriteEndObject();
     }
-
-    return context.Response.WriteAsync(
-        Encoding.UTF8.GetString(memoryStream.ToArray()));
+e/{
+    RecipeID
+}
 }

@@ -187,7 +187,7 @@ public class OrderProcessingWorkflow : IOrderWorkflow
             });
         // After publishing take payment above; we wait, until, the ReceivePaymentFor WorkflowSignal above is triggered
         // i.e. the WorkflowEngine receives a signal that the order is paid; this is done in PaymentSucessEventHandler.cs
-        // see the listener there for payments.paymentSuccessful; this event is sent by the payments API microservice!
+        // see the listener there for payments.paymentSuccessful.v1; this event is sent by the payments API microservice!
         while (!_orderPaidFor) await Workflow.DelayAsync(TimeSpan.FromSeconds(2));
     }
 

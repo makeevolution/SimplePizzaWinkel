@@ -6,7 +6,7 @@ namespace PlantBasedPizza.OrderManager.Core.PaymentSuccess;
 public class PaymentSuccessfulEventV1 : IntegrationEvent
 {
     [JsonIgnore]
-    public override string EventName => "payments.paymentSuccessful";
+    public override string EventName => "payments.paymentSuccessful.v1";
     
     [JsonIgnore]
     public override string EventVersion => "v1";

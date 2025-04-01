@@ -10,7 +10,8 @@ public class ConfirmOrderCommandHandler(IOrderRepository orderRepository)
         {
             var order = await orderRepository.Retrieve(command.OrderIdentifier);
             if (order is null) return null;
-
+            
+            // Update both the order state as well as register the orderConfirmed event (to be published by background worker)
             order.Confirm(command.PaymentAmount);
 
             await orderRepository.Update(order);

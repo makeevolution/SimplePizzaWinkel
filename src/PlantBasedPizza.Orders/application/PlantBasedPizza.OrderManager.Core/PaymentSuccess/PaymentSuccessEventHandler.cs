@@ -20,7 +20,7 @@ public class PaymentSuccessEventHandler
         _features = features;
     }
 
-    [Channel("payments.paymentSuccessful")]
+    [Channel("payments.paymentSuccessful.v1")]
     [PublishOperation(typeof(PaymentSuccessfulEventV1), OperationId = nameof(PaymentSuccessfulEventV1))]
     public async Task Handle(PaymentSuccessfulEventV1 evt)
     {

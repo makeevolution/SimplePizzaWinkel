@@ -73,9 +73,6 @@ namespace PlantBasedPizza.OrderManager.Core.Entities
 
         [JsonPropertyName("orderDate")]
         public DateTime OrderDate { get; private set; }
-
-        [JsonPropertyName("loyaltyPointsAtOrder")]
-        public decimal LoyaltyPointsAtOrder { get; private set; }
         
         [JsonPropertyName("awaitingCollection")]
         public bool AwaitingCollection { get; private set; }
@@ -245,6 +242,8 @@ namespace PlantBasedPizza.OrderManager.Core.Entities
             OrderSubmittedOn = DateTime.Now;
             
             AddHistory($"Submitted order.");
+            // addEvent will store an event in outbox in the database, and will be published by worker in the
+            // next iteration
             addEvent(new OrderSubmittedEventV1()
             {
                 OrderIdentifier = OrderIdentifier,
@@ -312,6 +311,7 @@ namespace PlantBasedPizza.OrderManager.Core.Entities
             _history.Add(new OrderHistory(description, DateTime.Now));
         }
 
+        // addEvent will store an event in outbox in the database, and will be published by worker in the next iteration
         private void addEvent(IntegrationEvent evt)
         {
             if (_events is null)

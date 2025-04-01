@@ -64,6 +64,8 @@ app.UseAuthorization();
 
 app.MapHub<OrderNotificationsHub>("/notifications/orders")
     .AllowAnonymous();
+
+// In EventHandlers.cs, Dapr subscription in [Topic] routes the topic to these routes
 app.MapGet("/orders/health", () => "Healthy").AllowAnonymous();
 app.MapPost("/payment-success", EventHandlers.HandlePaymentSuccessfulEvent);
 app.MapPost("/driver-collected", EventHandlers.HandleDriverCollectedOrderEvent);

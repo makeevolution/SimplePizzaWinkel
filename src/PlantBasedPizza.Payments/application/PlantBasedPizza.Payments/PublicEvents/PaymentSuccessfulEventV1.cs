@@ -6,7 +6,7 @@ namespace PlantBasedPizza.Payments.PublicEvents;
 public class PaymentSuccessfulEventV1 : IntegrationEvent
 {
     [JsonIgnore]
-    public const string EVENT_NAME = "payments.paymentSuccessful";
+    public const string EVENT_NAME = "payments.paymentSuccessful.v1";
     
     [JsonIgnore]
     public override string EventName => EVENT_NAME;

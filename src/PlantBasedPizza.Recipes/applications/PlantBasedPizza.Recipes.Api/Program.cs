@@ -45,7 +45,8 @@ builder.Services.AddSharedInfrastructure(builder.Configuration, applicationName)
 builder.Services.AddHttpClient().RemoveAll<IHttpMessageHandlerBuilderFilter>();
 builder.Services.AddHealthChecks()
     .AddMongoDb(builder.Configuration["DatabaseConnection"]);
-builder.Services.AddControllers();
+builder.Services.AddControllers(); // Scans the entire project and dependencies to find a class inheriting ControllerBase,
+                                   // and registers them
 
 var app = builder.Build();
 
@@ -62,7 +63,7 @@ app.MapHealthChecks("/recipes/health", new HealthCheckOptions
 var recipeRepo = app.Services.GetRequiredService<IRecipeRepository>();
 await recipeRepo.SeedRecipes();
 
-app.MapControllers();
+app.MapControllers();   // Turns on the endpoints defined in controllers to be accessible via HTTP
 
 await app.RunAsync();
 

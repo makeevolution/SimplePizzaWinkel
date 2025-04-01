@@ -105,7 +105,7 @@ public class RecipeRepository : IRecipeRepository
         await Add(spicy);
         await Add(fries);
 
-        var softDrinks = new[] { "Coca-Cola", "Fanta Orange", "Dr Pepper", "Water" };
+        var softDrinks = new[] { "Beer", "Wine", "Gin", "Vodka" };
 
         foreach (var drink in softDrinks)
         {

@@ -22,12 +22,12 @@ public class TakePaymentCommandHandler(ILogger<TakePaymentCommandHandler> logger
 
         try
         {
-            var randomSecondDelay = RandomNumberGenerator.GetInt32(1, 250);
+            ///////// Simulate contacting bank and charging it by a simple delay
+            var randomSecondDelay = RandomNumberGenerator.GetInt32(1, 2500);
 
             await Task.Delay(TimeSpan.FromMilliseconds(randomSecondDelay));
-        
-            logger.LogInformation("Publishing Payment Success Event");
-
+            ////////
+            // throw new Exception();
             var successEvent = new PaymentSuccessfulEventV1()
             {
                 OrderIdentifier = command.OrderIdentifier,

@@ -59,7 +59,7 @@ function OrderDetail(props) {
         }
         return;
       }
-    setSnackbarContents('Cancellation and refund (if applicable) requested');
+    setSnackbarContents('Cancellation requested. Please check your email for refund details, if you have been charged.');
     setSnackbarOpen(true);
   }
 

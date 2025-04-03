@@ -259,7 +259,7 @@ namespace PlantBasedPizza.OrderManager.Core.Entities
 
         public bool CancelOrder()
         {
-            if (OrderSubmittedOn.HasValue)
+            if (OrderSubmittedOn.HasValue) // TODO: add plus 10 seconds
             {
                 return false;
             }

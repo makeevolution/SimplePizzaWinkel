@@ -43,7 +43,7 @@ public class OrderProcessingWorkflow : IOrderWorkflow
         // it is just here for demo purposes
         await SubmitOrder();
         
-        // Then we also generate a take payment event simultaneously; for this one there is a listener indeed
+        // Then we also generate a take payment event; for this one there is a listener indeed
         await TakePayment();
 
         if (_orderCancelled)

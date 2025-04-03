@@ -259,7 +259,7 @@ namespace PlantBasedPizza.OrderManager.Core.Entities
 
         public bool CancelOrder()
         {
-            if (OrderSubmittedOn.HasValue)
+            if (!isOrderCancellable())
             {
                 return false;
             }
@@ -320,6 +320,15 @@ namespace PlantBasedPizza.OrderManager.Core.Entities
             }
             
             _events.Add(evt);
+        }
+
+        private bool isOrderCancellable()
+        {
+            if (OrderSubmittedOn.HasValue)
+            {
+                return (DateTime.Now - OrderSubmittedOn.Value).TotalSeconds <= 15;
+            }
+            return false;
         }
     }
 }

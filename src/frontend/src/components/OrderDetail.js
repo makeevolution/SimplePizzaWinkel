@@ -55,11 +55,11 @@ function OrderDetail(props) {
     catch (error){
       console.log(error)
         if (error.response.status == 400) {
-          triggerSnackbarOpen("This order is not cancellable anymore!")
+          triggerSnackbarOpen("This order cannot be cancelled anymore!")
         }
         return;
       }
-    setSnackbarContents('Cancellation requested');
+    setSnackbarContents('Cancellation and refund (if applicable) requested');
     setSnackbarOpen(true);
   }
 

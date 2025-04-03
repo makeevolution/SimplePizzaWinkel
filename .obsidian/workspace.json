@@ -1,0 +1,205 @@
+{
+  "main": {
+    "id": "c21a1b8eacdbae3e",
+    "type": "split",
+    "children": [
+      {
+        "id": "b29e7b7a26375e26",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2dd09cbf6c54ffd1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "README"
+            }
+          },
+          {
+            "id": "495c93aacbb1094d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "README"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "96cfddd088fb3691",
+    "type": "split",
+    "children": [
+      {
+        "id": "ad093bd09125962c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "66faab94f9db028b",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "983c894018efe19d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "354829e0e86152fe",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 342.5
+  },
+  "right": {
+    "id": "e1fdfaf10f03d548",
+    "type": "split",
+    "children": [
+      {
+        "id": "d4cf64c075c24ae6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "076f8e8ca903b09b",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "README.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for README"
+            }
+          },
+          {
+            "id": "a220e674149d1f54",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "README.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from README"
+            }
+          },
+          {
+            "id": "c71c478b05dd6dae",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "fa5a93a714afb69d",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "README.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of README"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "obsidian-excalidraw-plugin:New drawing": false
+    }
+  },
+  "active": "495c93aacbb1094d",
+  "lastOpenFiles": [
+    "Excalidraw/Drawing 2024-12-23 09.28.39.excalidraw.md",
+    "Excalidraw/Drawing 2024-12-23 10.14.03.excalidraw.md",
+    "Excalidraw/Drawing 2024-12-23 09.28.39.excalidraw.png",
+    "src/PlantBasedPizza.Recipes/tests/PlantBasedPizza.Recipes.UnitTests/RecipeTests.cs",
+    "src/PlantBasedPizza.Recipes/tests/PlantBasedPizza.Recipes.UnitTests/PlantBasedPizza.Recipes.UnitTests.csproj",
+    "src/PlantBasedPizza.Recipes/tests/PlantBasedPizza.Recipes.UnitTests/GlobalUsings.cs",
+    "README.md",
+    "Excalidraw/Drawing 2025-03-31 12.21.51.excalidraw.md",
+    "src/PlantBasedPizza.Recipes/tests/PlantBasedPizza.Recipes.UnitTests/obj/Debug/net9.0/refint",
+    "src/PlantBasedPizza.Recipes/tests/PlantBasedPizza.Recipes.UnitTests/obj/Debug/net9.0/ref",
+    "src/PlantBasedPizza.Recipes/tests/PlantBasedPizza.Recipes.UnitTests/obj/Debug/net9.0/PlantBasedPizza.Recipes.UnitTests.GeneratedMSBuildEditorConfig.editorconfig",
+    "src/PlantBasedPizza.Recipes/tests/PlantBasedPizza.Recipes.UnitTests/obj/Debug/net9.0/PlantBasedPizza.Recipes.UnitTests.GlobalUsings.g.cs",
+    "src/PlantBasedPizza.Recipes/tests/PlantBasedPizza.Recipes.UnitTests/obj/Debug/net9.0/PlantBasedPizza.Recipes.UnitTests.AssemblyInfoInputs.cache",
+    "src/PlantBasedPizza.Recipes/tests/PlantBasedPizza.Recipes.UnitTests/obj/Debug/net9.0/PlantBasedPizza.Recipes.UnitTests.csproj.AssemblyReference.cache",
+    "src/PlantBasedPizza.Recipes/tests/PlantBasedPizza.Recipes.UnitTests/obj/Debug/net9.0/PlantBasedPizza.Recipes.UnitTests.assets.cache"
+  ]
+}

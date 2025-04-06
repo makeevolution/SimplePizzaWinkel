@@ -4,12 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "f572b80099582f8c",
+        "id": "d58e5d4b7522567b",
         "type": "tabs",
-        "dimension": 60.2874432677761,
         "children": [
           {
-            "id": "0f99d82cf821d33c",
+            "id": "36a2cb0078c9384c",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -20,25 +19,6 @@
               },
               "icon": "lucide-file",
               "title": "README"
-            }
-          }
-        ]
-      },
-      {
-        "id": "d58e5d4b7522567b",
-        "type": "tabs",
-        "dimension": 39.7125567322239,
-        "children": [
-          {
-            "id": "36a2cb0078c9384c",
-            "type": "leaf",
-            "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "Excalidraw/Drawing 2024-12-23 09.28.39.excalidraw.md"
-              },
-              "icon": "excalidraw-icon",
-              "title": "Drawing 2024-12-23 09.28.39.excalidraw"
             }
           }
         ]
@@ -98,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 336.5
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "1358cad286d77711",
@@ -191,8 +172,9 @@
   },
   "active": "36a2cb0078c9384c",
   "lastOpenFiles": [
-    "README.md",
+    "build",
     "Excalidraw/Drawing 2024-12-23 09.28.39.excalidraw.md",
+    "README.md",
     "Excalidraw/Drawing 2024-12-23 09.28.39.excalidraw.png"
   ]
 }

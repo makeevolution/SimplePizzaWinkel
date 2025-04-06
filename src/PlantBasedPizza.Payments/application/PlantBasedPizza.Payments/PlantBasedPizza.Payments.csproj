@@ -28,4 +28,8 @@
       <ProjectReference Include="..\..\..\shared\PlantBasedPizza.Shared\PlantBasedPizza.Shared.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Core\Entities\Interfaces\" />
+    </ItemGroup>
+
 </Project>

@@ -9,7 +9,14 @@ services:
       - 27017:27017
     networks:
       - dapr
-
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - dapr
   mongo-express:
     image: mongo-express
     container_name: mongodb-express

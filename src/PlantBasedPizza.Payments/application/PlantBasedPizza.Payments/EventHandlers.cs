@@ -1,9 +1,12 @@
 using System.Diagnostics;
+using System.Text.Json;
 using Dapr;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.Extensions.Caching.Distributed;
 using PlantBasedPizza.Events;
+using PlantBasedPizza.Payments.Core.Adapters.Repositories;
+using PlantBasedPizza.Payments.Entities;
 using PlantBasedPizza.Payments.RefundPayment;
 using PlantBasedPizza.Payments.TakePayment;
 
@@ -14,7 +17,7 @@ public static class EventHandlers
     public static WebApplication AddEventHandlers(this WebApplication app)
     {
         app.MapPost("/take-payment",
-            [Topic("payments", "payments.takepayment.v1")]
+            [Topic("payments", "payments.takepayment.v1", DeadLetterTopic = "payments.failedMessages")]
             async ([FromServices] TakePaymentCommandHandler handler, IDistributedCache cache, HttpContext ctx,
                 TakePaymentCommand command) =>
             {
@@ -56,7 +59,7 @@ public static class EventHandlers
             });
         
         app.MapPost("/refund-payment",
-            [Topic("payments", "payments.refundpayment.v1")]
+            [Topic("payments", "payments.refundpayment.v1", DeadLetterTopic = "payments.failedMessages")]
             async ([FromServices] RefundPaymentCommandHandler handler, IDistributedCache cache, HttpContext ctx,
                 RefundPaymentCommand command) =>
             {
@@ -95,5 +98,24 @@ public static class EventHandlers
             });
 
         return app;
+    }
+    
+    [Topic("public", "payments.failedMessages")]
+    public static async Task<IResult> HandleDeadLetterMessage(
+        [FromServices] IDeadLetterRepository deadLetterRepository,
+        HttpContext httpContext,
+        object data)
+    {
+        var eventData = httpContext.ExtractEventData();
+
+        await deadLetterRepository.StoreAsync(new DeadLetterMessage
+        {
+            EventId = eventData.EventId,
+            EventType = eventData.EventType,
+            EventData = JsonSerializer.Serialize(data),
+            TraceParent = eventData.TraceParent
+        });
+
+        return Results.Ok();
     }
 }

@@ -1,7 +1,7 @@
 using Grpc.Core;
 using PlantBasedPizza.Orders.Internal;
 
-namespace PlantBasedPizza.Payments.Adapters;
+namespace PlantBasedPizza.Payments.Infrastructure.Services;
 
 public class OrderService(Orders.Internal.Orders.OrdersClient orderClient) : IOrderService
 {

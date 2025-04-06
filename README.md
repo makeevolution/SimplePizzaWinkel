@@ -128,8 +128,6 @@ alt payment successful
 	frontend->ordersService: HTTP POST /order/collected, user collects order
 else payment failed
 	paymentService->messagingBus: publish event payments.paymentFailed.v1 (ADD MORE)
-
-TODO: check again behavior of submit order in the implementation, can you cancel immediately after you press submit?
 end
 ```
 

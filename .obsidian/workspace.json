@@ -6,7 +6,7 @@
       {
         "id": "f572b80099582f8c",
         "type": "tabs",
-        "dimension": 60.2874432677761,
+        "dimension": 82.174688057041,
         "children": [
           {
             "id": "0f99d82cf821d33c",
@@ -25,12 +25,12 @@
         ]
       },
       {
-        "id": "d58e5d4b7522567b",
+        "id": "5616e486d3aa8fd0",
         "type": "tabs",
-        "dimension": 39.7125567322239,
+        "dimension": 17.825311942959,
         "children": [
           {
-            "id": "36a2cb0078c9384c",
+            "id": "aa32393c91ee3207",
             "type": "leaf",
             "state": {
               "type": "excalidraw",
@@ -98,7 +98,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 336.5
+    "width": 200
   },
   "right": {
     "id": "1358cad286d77711",
@@ -189,10 +189,17 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "36a2cb0078c9384c",
+  "active": "3d6189231f7997e4",
   "lastOpenFiles": [
+    "docs/Overview.md",
+    "docs/Self notes.md",
+    "docs/Use cases.md",
     "README.md",
+    "docs/Entities.md",
+    "docs",
     "Excalidraw/Drawing 2024-12-23 09.28.39.excalidraw.md",
+    "Excalidraw/Drawing 2024-12-23 10.14.03.excalidraw.md",
+    "Excalidraw/Drawing 2024-12-23 10.14.03.excalidraw.png",
     "Excalidraw/Drawing 2024-12-23 09.28.39.excalidraw.png"
   ]
 }

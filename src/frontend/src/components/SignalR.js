@@ -33,7 +33,13 @@ class NotificationHub {
         this.alert("Payment successful");
       }
     });
-
+    // Set up event listeners
+    this.connection.on("paymentFailed", (message) => {
+      console.log("Payment failed:", message);
+      if (typeof this.alert === "function") {
+        this.alert("Payment was not successful! Please contact support!");
+      }
+    });
     // Set up event listeners
     this.connection.on("preparing", (message) => {
       console.log("Order preparing:", message);
@@ -86,7 +92,7 @@ class NotificationHub {
     this.connection.on("cancellationFailed", (message) => {
       console.log("Order quality checked:", message);
       if (typeof this.alert === "function") {
-        this.alert("Unfortunately, the kitchen has already started your order and it cannot be cancelled");
+        this.alert("This order cannot be cancelled anymore");
       }
     });
 

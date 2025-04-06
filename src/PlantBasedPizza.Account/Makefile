@@ -5,10 +5,10 @@ build-arm:
 	docker build -f application/PlantBasedPizza.Account.Api/Dockerfile -t account-api ../
 
 tag-images:
-	docker tag account-api plantpowerjames/plant-based-pizza-account-api:${IMAGE_TAG}
+	docker tag account-api aldosebastian/plant-based-pizza-account-api:${IMAGE_TAG}
 
 push:
-	docker push plantpowerjames/plant-based-pizza-account-api:${IMAGE_TAG}
+	docker push aldosebastian/plant-based-pizza-account-api:${IMAGE_TAG}
 
 unit-test:
 	dotnet test tests/PlantBasedPizza.Account.UnitTests

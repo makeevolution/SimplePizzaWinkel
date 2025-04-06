@@ -3,7 +3,7 @@ using Grpc.Core;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.StackExchangeRedis;
 using Microsoft.Extensions.Options;
-using PlantBasedPizza.Payments.TakePayment;
+using PlantBasedPizza.Payments.Core.TakePayment;
 
 namespace PlantBasedPizza.Payments.IntegrationTests.Drivers;
 

@@ -1,4 +1,4 @@
-namespace PlantBasedPizza.Payments.PublicEvents;
+namespace PlantBasedPizza.Payments.Core.PublicEvents;
 
 public interface IPaymentEventPublisher
 {

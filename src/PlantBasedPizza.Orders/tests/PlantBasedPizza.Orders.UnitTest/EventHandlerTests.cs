@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using NJsonSchema;
 using PlantBasedPizza.OrderManager.Core.Entities;
+using PlantBasedPizza.OrderManager.Core.PaymentFailed;
 using PlantBasedPizza.OrderManager.Core.PaymentSuccess;
 using PlantBasedPizza.OrderManager.Core.Services;
 using PlantBasedPizza.Orders.Worker;
@@ -36,7 +37,7 @@ public class EventHandlerTests
         var inMemoryOrderRepository = new InMemoryOrderRepository();
         await inMemoryOrderRepository.Add(testOrder);
 
-        var paymentSuccessEventHandler = new PaymentSuccessEventHandler(inMemoryOrderRepository,
+        var paymentSuccessEventHandler = new PaymentFailedEventHandler(inMemoryOrderRepository,
             userNotificationService.Object, workflowEngine.Object, features.Object);
 
         var expectedPaymentSuccessSchema =
@@ -67,7 +68,7 @@ public class EventHandlerTests
         var inMemoryOrderRepository = new InMemoryOrderRepository(true);
         await inMemoryOrderRepository.Add(testOrder);
 
-        var paymentSuccessEventHandler = new PaymentSuccessEventHandler(inMemoryOrderRepository,
+        var paymentSuccessEventHandler = new PaymentFailedEventHandler(inMemoryOrderRepository,
             userNotificationService.Object, workflowEngine.Object, features.Object);
 
         var expectedPaymentSuccessSchema =

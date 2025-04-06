@@ -1,5 +1,6 @@
 using Grpc.Core;
 using PlantBasedPizza.Orders.Internal;
+using PlantBasedPizza.Payments.Core.Services;
 
 namespace PlantBasedPizza.Payments.Infrastructure.Services;
 

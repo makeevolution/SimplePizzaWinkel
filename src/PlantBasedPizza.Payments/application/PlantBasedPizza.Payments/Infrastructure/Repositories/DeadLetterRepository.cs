@@ -1,6 +1,6 @@
 using MongoDB.Driver;
 using PlantBasedPizza.Payments.Core.Adapters.Repositories;
-using PlantBasedPizza.Payments.Entities;
+using PlantBasedPizza.Payments.Core.Entities;
 
 namespace PlantBasedPizza.Payments.Infrastructure.Repositories;
 

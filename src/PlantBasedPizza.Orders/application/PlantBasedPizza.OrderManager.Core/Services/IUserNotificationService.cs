@@ -3,6 +3,7 @@ namespace PlantBasedPizza.OrderManager.Core.Services;
 public interface IUserNotificationService
 {
     Task NotifyPaymentSuccess(string customerIdentifier, string orderIdentifier);
+    Task NotifyPaymentFailed(string customerIdentifier, string orderIdentifier);
     
     Task NotifyOrderPreparing(string customerIdentifier, string orderIdentifier);
     

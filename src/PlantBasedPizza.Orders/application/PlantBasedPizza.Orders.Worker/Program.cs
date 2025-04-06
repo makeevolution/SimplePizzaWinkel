@@ -5,6 +5,7 @@ using PlantBasedPizza.OrderManager.Core.OrderBaked;
 using PlantBasedPizza.OrderManager.Core.OrderPreparing;
 using PlantBasedPizza.OrderManager.Core.OrderPrepComplete;
 using PlantBasedPizza.OrderManager.Core.OrderQualityChecked;
+using PlantBasedPizza.OrderManager.Core.PaymentFailed;
 using PlantBasedPizza.OrderManager.Core.PaymentSuccess;
 using PlantBasedPizza.OrderManager.Core.Services;
 using PlantBasedPizza.OrderManager.Infrastructure;
@@ -53,7 +54,7 @@ builder.Services.AddSingleton<OrderBakedEventHandler>();
 builder.Services.AddSingleton<OrderPreparingEventHandler>();
 builder.Services.AddSingleton<OrderPrepCompleteEventHandler>();
 builder.Services.AddSingleton<OrderQualityCheckedEventHandler>();
-builder.Services.AddSingleton<PaymentSuccessEventHandler>();
+builder.Services.AddSingleton<PaymentFailedEventHandler>();
 builder.Services.AddSingleton<Idempotency, CachedIdempotencyService>();
 builder.Services.AddHostedService<OutboxWorker>();
 
@@ -68,6 +69,7 @@ app.MapHub<OrderNotificationsHub>("/notifications/orders")
 // In EventHandlers.cs, Dapr subscription in [Topic] routes the topic to these routes
 app.MapGet("/orders/health", () => "Healthy").AllowAnonymous();
 app.MapPost("/payment-success", EventHandlers.HandlePaymentSuccessfulEvent);
+app.MapPost("/payment-failed", EventHandlers.HandlePaymentFailedEvent);
 app.MapPost("/driver-collected", EventHandlers.HandleDriverCollectedOrderEvent);
 app.MapPost("/driver-delivered", EventHandlers.HandleDriverDeliveredOrderEvent);
 app.MapPost("/loyalty-updated", EventHandlers.HandleLoyaltyPointsUpdatedEvent);

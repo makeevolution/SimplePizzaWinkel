@@ -18,10 +18,10 @@ namespace PlantBasedPizza.Kitchen.Core.Adapters
         public string RecipeIdentifier { get; set; } = "";
         
         [JsonPropertyName("ingredients")]
-        public List<RecipeItemAdapter> Ingredients { get; set; }
+        public List<IngredientsAdapter> Ingredients { get; set; }
     }
 
-    public record RecipeItemAdapter
+    public record IngredientsAdapter
     {
         [JsonPropertyName("name")]
         public string Name { get; set; }

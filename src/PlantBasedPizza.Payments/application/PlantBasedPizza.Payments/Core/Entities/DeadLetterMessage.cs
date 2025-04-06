@@ -1,4 +1,4 @@
-namespace PlantBasedPizza.Payments.Entities;
+namespace PlantBasedPizza.Payments.Core.Entities;
 
 public record DeadLetterMessage
 {

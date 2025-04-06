@@ -15,12 +15,12 @@ build-worker-arm:
 	docker build -f application/PlantBasedPizza.Kitchen.Worker/Dockerfile -t kitchen-worker ../
 
 tag-images:
-	docker tag kitchen-api plantpowerjames/plant-based-pizza-kitchen-api:${IMAGE_TAG}
-	docker tag kitchen-worker plantpowerjames/plant-based-pizza-kitchen-worker:${IMAGE_TAG}
+	docker tag kitchen-api aldosebastian/plant-based-pizza-kitchen-api:${IMAGE_TAG}
+	docker tag kitchen-worker aldosebastian/plant-based-pizza-kitchen-worker:${IMAGE_TAG}
 
 push:
-	docker push plantpowerjames/plant-based-pizza-kitchen-api:${IMAGE_TAG}
-	docker push plantpowerjames/plant-based-pizza-kitchen-worker:${IMAGE_TAG}
+	docker push aldosebastian/plant-based-pizza-kitchen-api:${IMAGE_TAG}
+	docker push aldosebastian/plant-based-pizza-kitchen-worker:${IMAGE_TAG}
 
 unit-test:
 	dotnet test tests/PlantBasedPizza.Kitchen.UnitTests

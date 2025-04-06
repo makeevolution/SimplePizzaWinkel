@@ -2,7 +2,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using PlantBasedPizza.Events;
 
-namespace PlantBasedPizza.Payments.RefundPayment;
+namespace PlantBasedPizza.Payments.Core.RefundPayment;
 
 public class RefundPaymentCommand : IntegrationEvent
 {

@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
 using PlantBasedPizza.Events;
 
-namespace PlantBasedPizza.Payments.PublicEvents;
+namespace PlantBasedPizza.Payments.Core.PublicEvents;
 
 public class PaymentSuccessfulEventV1 : IntegrationEvent
 {
@@ -15,7 +15,7 @@ public class PaymentSuccessfulEventV1 : IntegrationEvent
     public override string EventVersion => "v1";
     
     [JsonIgnore]
-    public override Uri Source => new("https://payments.plantbasedpizza.com");
+    public override Uri Source => new("https://payments.simplepizzawinkel.com");
     
     public string OrderIdentifier { get; init; }
     

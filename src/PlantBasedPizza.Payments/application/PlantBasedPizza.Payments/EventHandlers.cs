@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.Extensions.Caching.Distributed;
 using PlantBasedPizza.Events;
 using PlantBasedPizza.Payments.Core.Adapters.Repositories;
-using PlantBasedPizza.Payments.Entities;
-using PlantBasedPizza.Payments.RefundPayment;
-using PlantBasedPizza.Payments.TakePayment;
+using PlantBasedPizza.Payments.Core.Entities;
+using PlantBasedPizza.Payments.Core.RefundPayment;
+using PlantBasedPizza.Payments.Core.TakePayment;
 
 namespace PlantBasedPizza.Payments;
 

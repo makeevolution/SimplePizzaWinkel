@@ -10,6 +10,7 @@ using PlantBasedPizza.OrderManager.Core.OrderBaked;
 using PlantBasedPizza.OrderManager.Core.OrderPreparing;
 using PlantBasedPizza.OrderManager.Core.OrderPrepComplete;
 using PlantBasedPizza.OrderManager.Core.OrderQualityChecked;
+using PlantBasedPizza.OrderManager.Core.PaymentFailed;
 using PlantBasedPizza.OrderManager.Core.PaymentSuccess;
 using PlantBasedPizza.OrderManager.Infrastructure;
 using PlantBasedPizza.Orders.Worker.IntegrationEvents;
@@ -47,7 +48,37 @@ public static class EventHandlers
             return Results.InternalServerError();
         }
     }
+    
+    [Topic("payments",
+        "payments.paymentFailed.v1",
+        DeadLetterTopic = "orders.failedMessages")]
+    public static async Task<IResult> HandlePaymentFailedEvent(
+        [FromServices] PaymentFailedEventHandler paymentFailedEventHandler,
+        [FromServices] Idempotency idempotency,
+        HttpContext httpContext,
+        PaymentFailedEventV1 evt)
+    {
+        try
+        {
+            var eventId = httpContext.ExtractEventId();
 
+            if (await idempotency.HasEventBeenProcessedWithId(eventId)) return Results.Ok();
+
+            await paymentFailedEventHandler.Handle(evt);
+            
+            await idempotency.ProcessedSuccessfully(eventId);
+
+            return Results.Ok();
+        }
+        catch (Exception ex)
+        {
+            Activity.Current?.AddException(ex);
+            Activity.Current?.AddTag("messaging.error", true);
+
+            return Results.InternalServerError();
+        }
+    }
+    
     [Topic("public", "delivery.driverCollectedOrder.v1",
         DeadLetterTopic = "orders.failedMessages")]
     public static async Task<IResult> HandleDriverCollectedOrderEvent(

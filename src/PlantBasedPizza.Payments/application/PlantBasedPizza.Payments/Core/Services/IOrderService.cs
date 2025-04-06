@@ -1,4 +1,4 @@
-namespace PlantBasedPizza.Payments;
+namespace PlantBasedPizza.Payments.Core.Services;
 
 public interface IOrderService
 {

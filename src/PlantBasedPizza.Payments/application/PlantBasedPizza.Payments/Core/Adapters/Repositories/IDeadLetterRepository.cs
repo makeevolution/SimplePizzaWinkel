@@ -1,4 +1,4 @@
-using PlantBasedPizza.Payments.Entities;
+using PlantBasedPizza.Payments.Core.Entities;
 
 namespace PlantBasedPizza.Payments.Core.Adapters.Repositories;
 

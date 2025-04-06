@@ -257,9 +257,14 @@ namespace PlantBasedPizza.OrderManager.Core.Entities
             AddHistory("Order awaiting collection");
         }
 
-        public bool CancelOrder()
+        public bool CancelOrder(bool checkTimeout = false)
         {
-            if (!isOrderCancellable())
+            if (checkTimeout && IsTooLateToCancel())
+            {
+                return false;
+            }
+            
+            if (OrderCancelledOn.HasValue)
             {
                 return false;
             }
@@ -322,11 +327,11 @@ namespace PlantBasedPizza.OrderManager.Core.Entities
             _events.Add(evt);
         }
 
-        private bool isOrderCancellable()
+        private bool IsTooLateToCancel()
         {
             if (OrderSubmittedOn.HasValue)
             {
-                return (DateTime.Now - OrderSubmittedOn.Value).TotalSeconds <= 15;
+                return (DateTime.Now - OrderSubmittedOn.Value).TotalSeconds > 15;
             }
             return false;
         }

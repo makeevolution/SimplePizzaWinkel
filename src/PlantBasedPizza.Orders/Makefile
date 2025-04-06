@@ -17,14 +17,14 @@ build-internal-arm:
 	docker build -f application/PlantBasedPizza.Orders.Internal/Dockerfile -t order-internal ../
 
 tag-images:
-	docker tag order-api plantpowerjames/plant-based-pizza-order-api:${IMAGE_TAG}
-	docker tag order-worker plantpowerjames/plant-based-pizza-order-worker:${IMAGE_TAG}
-	docker tag order-internal plantpowerjames/plant-based-pizza-order-internal:${IMAGE_TAG}
+	docker tag order-api aldosebastian/plant-based-pizza-order-api:${IMAGE_TAG}
+	docker tag order-worker aldosebastian/plant-based-pizza-order-worker:${IMAGE_TAG}
+	docker tag order-internal aldosebastian/plant-based-pizza-order-internal:${IMAGE_TAG}
 
 push:
-	docker push plantpowerjames/plant-based-pizza-order-api:${IMAGE_TAG}
-	docker push plantpowerjames/plant-based-pizza-order-worker:${IMAGE_TAG}
-	docker push plantpowerjames/plant-based-pizza-order-internal:${IMAGE_TAG}
+	docker push aldosebastian/plant-based-pizza-order-api:${IMAGE_TAG}
+	docker push aldosebastian/plant-based-pizza-order-worker:${IMAGE_TAG}
+	docker push aldosebastian/plant-based-pizza-order-internal:${IMAGE_TAG}
 
 unit-test:
 	dotnet test tests/PlantBasedPizza.Orders.UnitTest

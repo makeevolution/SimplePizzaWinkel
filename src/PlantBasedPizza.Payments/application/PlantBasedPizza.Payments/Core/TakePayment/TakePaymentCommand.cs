@@ -2,13 +2,13 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using PlantBasedPizza.Events;
 
-namespace PlantBasedPizza.Payments.TakePayment;
+namespace PlantBasedPizza.Payments.Core.TakePayment;
 
 public class TakePaymentCommand : IntegrationEvent
 {
     public override string EventName => "payments.takepayment";
     public override string EventVersion => "v1";
-    public override Uri Source => new Uri("https://orders.plantbasedpizza");
+    public override Uri Source => new Uri("https://orders.simplepizzawinkel.com");
     
     [JsonPropertyName("OrderIdentifier")]
     public string OrderIdentifier { get; set; }

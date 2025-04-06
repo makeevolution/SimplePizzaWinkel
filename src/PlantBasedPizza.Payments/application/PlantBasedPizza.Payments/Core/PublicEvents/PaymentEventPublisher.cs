@@ -2,7 +2,7 @@ using Dapr.Client;
 using PlantBasedPizza.Events;
 using Saunter.Attributes;
 
-namespace PlantBasedPizza.Payments.PublicEvents;
+namespace PlantBasedPizza.Payments.Core.PublicEvents;
 
 [AsyncApi]
 public class PaymentEventPublisher(DaprClient daprClient) : IPaymentEventPublisher

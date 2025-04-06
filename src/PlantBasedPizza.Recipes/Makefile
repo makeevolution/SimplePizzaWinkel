@@ -5,10 +5,10 @@ build-arm:
 	docker build -f applications/PlantBasedPizza.Recipes.Api/Dockerfile -t recipe-api ../
 
 tag-images:
-	docker tag recipe-api plantpowerjames/plant-based-pizza-recipe-api:${IMAGE_TAG}
+	docker tag recipe-api aldosebastian/plant-based-pizza-recipe-api:${IMAGE_TAG}
 
 push:
-	docker push plantpowerjames/plant-based-pizza-recipe-api:${IMAGE_TAG}
+	docker push aldosebastian/plant-based-pizza-recipe-api:${IMAGE_TAG}
 
 unit-test:
 	dotnet test tests/PlantBasedPizza.Recipes.UnitTests

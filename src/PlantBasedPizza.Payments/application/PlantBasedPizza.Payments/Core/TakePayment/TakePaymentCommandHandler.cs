@@ -1,10 +1,10 @@
 using System.Diagnostics;
 using System.Security.Cryptography;
 using Microsoft.Extensions.Caching.Distributed;
-using PlantBasedPizza.Payments.PublicEvents;
+using PlantBasedPizza.Payments.Core.PublicEvents;
 using Saunter.Attributes;
 
-namespace PlantBasedPizza.Payments.TakePayment;
+namespace PlantBasedPizza.Payments.Core.TakePayment;
 
 public class TakePaymentCommandHandler(ILogger<TakePaymentCommandHandler> logger, IPaymentEventPublisher eventPublisher, IDistributedCache cache)
 {
@@ -23,15 +23,11 @@ public class TakePaymentCommandHandler(ILogger<TakePaymentCommandHandler> logger
         try
         {
             ///////// Simulate contacting bank and charging it by a simple delay
-            var randomSecondDelay = RandomNumberGenerator.GetInt32(1, 2500);
+            var randomSecondDelay = RandomNumberGenerator.GetInt32(2500, 5000);
 
             await Task.Delay(TimeSpan.FromMilliseconds(randomSecondDelay));
-            if (Environment.GetEnvironmentVariable("FAIL_PAYMENT") is not null)
-            {
-                var fail_message = $"Simulate failure processing payment for order {command.OrderIdentifier}";
-                logger.LogError(fail_message);
-                throw new Exception(fail_message);
-            }
+            
+            _simulatePaymentFailure(command);
 
             var successEvent = new PaymentSuccessfulEventV1()
             {
@@ -56,6 +52,18 @@ public class TakePaymentCommandHandler(ILogger<TakePaymentCommandHandler> logger
             });
 
             return false;
+        }
+    }
+
+    private void _simulatePaymentFailure(TakePaymentCommand command)
+    {
+        //  SImulate a failure
+        var failPayment = Environment.GetEnvironmentVariable("FAIL_PAYMENT");
+        if (failPayment == "true")
+        {
+            var fail_message = $"Simulate failure processing payment for order {command.OrderIdentifier}";
+            logger.LogError(fail_message);
+            throw new Exception(fail_message);
         }
     }
 }

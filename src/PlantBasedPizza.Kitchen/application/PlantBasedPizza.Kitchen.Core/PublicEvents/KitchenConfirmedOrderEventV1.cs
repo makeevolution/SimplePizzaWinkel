@@ -7,7 +7,7 @@ public class KitchenConfirmedOrderEventV1 : IntegrationEvent
 {
     public override string EventName => "kitchen.orderConfirmed";
     public override string EventVersion => "v1";
-    public override Uri Source => new Uri("https://kitchen.plantbasedpizza");
+    public override Uri Source => new Uri("https://kitchen.simplepizzawinkel");
 
     public string OrderIdentifier { get; set; } = "";
 

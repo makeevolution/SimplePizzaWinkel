@@ -11,6 +11,7 @@ CHECKLIST.md
 *.sln.docstates
 .vscode/
 
+**.containers
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

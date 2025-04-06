@@ -1,8 +1,11 @@
 using Grpc.Core;
 using Grpc.Net.Client.Configuration;
+using MongoDB.Driver;
 using PlantBasedPizza.Orders.Internal;
 using PlantBasedPizza.Payments;
-using PlantBasedPizza.Payments.Adapters;
+using PlantBasedPizza.Payments.Core.Adapters.Repositories;
+using PlantBasedPizza.Payments.Infrastructure.Repositories;
+using PlantBasedPizza.Payments.Infrastructure.Services;
 using PlantBasedPizza.Payments.PublicEvents;
 using PlantBasedPizza.Payments.RefundPayment;
 using PlantBasedPizza.Payments.TakePayment;
@@ -41,8 +44,9 @@ builder.Services
 builder.Services.AddSingleton<TakePaymentCommandHandler>();
 builder.Services.AddSingleton<RefundPaymentCommandHandler>();
 builder.Services.AddSingleton<IPaymentEventPublisher, PaymentEventPublisher>();
+builder.Services.AddSingleton<IDeadLetterRepository, DeadLetterRepository>();
 builder.Services.AddSingleton<IOrderService, OrderService>();
-
+builder.Services.AddSingleton(new MongoClient(builder.Configuration["DatabaseConnection"]));
 builder.Services.AddDaprClient();
 
 // Add default gRPC retries
@@ -71,6 +75,7 @@ builder.Services.AddGrpcClient<Orders.OrdersClient>(o =>
 var app = builder.Build();
 
 app.MapGet("/payments/health", () => "Healthy");
+app.MapPost("/event-dead-letter", EventHandlers.HandleDeadLetterMessage);
 
 app.UseRouting();
 

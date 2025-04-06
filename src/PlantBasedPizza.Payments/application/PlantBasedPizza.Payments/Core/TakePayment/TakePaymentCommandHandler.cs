@@ -22,11 +22,16 @@ public class TakePaymentCommandHandler(ILogger<TakePaymentCommandHandler> logger
 
         try
         {
-            var randomSecondDelay = RandomNumberGenerator.GetInt32(1, 250);
+            ///////// Simulate contacting bank and charging it by a simple delay
+            var randomSecondDelay = RandomNumberGenerator.GetInt32(1, 2500);
 
             await Task.Delay(TimeSpan.FromMilliseconds(randomSecondDelay));
-        
-            logger.LogInformation("Publishing Payment Success Event");
+            if (Environment.GetEnvironmentVariable("FAIL_PAYMENT") is not null)
+            {
+                var fail_message = $"Simulate failure processing payment for order {command.OrderIdentifier}";
+                logger.LogError(fail_message);
+                throw new Exception(fail_message);
+            }
 
             var successEvent = new PaymentSuccessfulEventV1()
             {

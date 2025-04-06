@@ -15,7 +15,7 @@ public class PaymentSuccessfulEventV1 : IntegrationEvent
     public override string EventVersion => "v1";
     
     [JsonIgnore]
-    public override Uri Source => new("https://payments.simplepizzawinkel.com");
+    public override Uri Source => new("https://payments.plantbasedpizza.com");
     
     public string OrderIdentifier { get; init; }
     

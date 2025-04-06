@@ -23,7 +23,7 @@ public class TakePaymentCommandHandler(ILogger<TakePaymentCommandHandler> logger
         try
         {
             ///////// Simulate contacting bank and charging it by a simple delay
-            var randomSecondDelay = RandomNumberGenerator.GetInt32(2500, 5000);
+            var randomSecondDelay = RandomNumberGenerator.GetInt32(1500, 2000);
 
             await Task.Delay(TimeSpan.FromMilliseconds(randomSecondDelay));
             

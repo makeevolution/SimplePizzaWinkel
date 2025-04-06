@@ -10,6 +10,7 @@ using PlantBasedPizza.OrderManager.Core.OrderPreparing;
 using PlantBasedPizza.OrderManager.Core.OrderPrepComplete;
 using PlantBasedPizza.OrderManager.Core.OrderQualityChecked;
 using PlantBasedPizza.OrderManager.Core.PaymentSuccess;
+using PlantBasedPizza.OrderManager.Core.PaymentFailed;
 using PlantBasedPizza.OrderManager.Infrastructure;
 using PlantBasedPizza.OrderManager.Infrastructure.HealthChecks;
 using PlantBasedPizza.Orders.Api;
@@ -22,7 +23,6 @@ using Serilog.Extensions.Logging;
 using Serilog.Formatting.Json;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Http;
-using PlantBasedPizza.OrderManager.Core.PaymentFailed;
 
 var builder = WebApplication.CreateBuilder(args);
 builder
@@ -53,6 +53,7 @@ builder.Services.AddOrderManagerInfrastructure(builder.Configuration)
             typeof(OrderPreparingEventHandler),
             typeof(OrderPrepCompleteEventHandler),
             typeof(OrderQualityCheckedEventHandler),
+            typeof(PaymentSuccessEventHandler),
             typeof(PaymentFailedEventHandler),
         ]
         , "OrdersService");

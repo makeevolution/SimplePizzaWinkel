@@ -24,7 +24,7 @@ public class RegisterUserEndpoint(UserAccountService userAccountService, ILogger
         }
         catch (UserExistsException ex)
         {
-            logger.LogError(ex, "Failed to register driver");
+            logger.LogError(ex, "Failed to register user");
             await SendErrorsAsync(400, ct);
             return null;
         }

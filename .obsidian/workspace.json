@@ -4,41 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "f572b80099582f8c",
+        "id": "d58e5d4b7522567b",
         "type": "tabs",
-        "dimension": 82.174688057041,
         "children": [
           {
-            "id": "0f99d82cf821d33c",
+            "id": "36a2cb0078c9384c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "docs/Use cases.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "Use cases"
             }
-          }
-        ]
-      },
-      {
-        "id": "5616e486d3aa8fd0",
-        "type": "tabs",
-        "dimension": 17.825311942959,
-        "children": [
+          },
           {
-            "id": "aa32393c91ee3207",
+            "id": "4a7da9ac66778bc3",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "Excalidraw/Drawing 2024-12-23 09.28.39.excalidraw.md"
+                "file": "docs/Use cases.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "excalidraw-icon",
-              "title": "Drawing 2024-12-23 09.28.39.excalidraw"
+              "icon": "lucide-file",
+              "title": "Use cases"
             }
           }
         ]
@@ -185,20 +179,25 @@
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "3d6189231f7997e4",
+  "active": "36a2cb0078c9384c",
   "lastOpenFiles": [
+    "docker-compose-services.yml~",
+    "docs/Use cases-2025-04-06-20-21-08.png",
     "docs/Overview.md",
+    "src/PlantBasedPizza.Account/application/PlantBasedPizza.Account.Infrastructure/obj/e9dc2b6a-74c9-46e2-a023-0f58e389a60a.tmp",
     "docs/Self notes.md",
     "docs/Use cases.md",
-    "README.md",
     "docs/Entities.md",
+    "SimplePizzaWinkel.sln.DotSettings.user",
+    "SimplePizzaWinkel.sln",
+    "README.md",
     "docs",
+    "build",
     "Excalidraw/Drawing 2024-12-23 09.28.39.excalidraw.md",
-    "Excalidraw/Drawing 2024-12-23 10.14.03.excalidraw.md",
-    "Excalidraw/Drawing 2024-12-23 10.14.03.excalidraw.png",
     "Excalidraw/Drawing 2024-12-23 09.28.39.excalidraw.png"
   ]
 }

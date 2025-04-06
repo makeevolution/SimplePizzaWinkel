@@ -3,21 +3,13 @@ kind: Component
 metadata:
   name: payments
 spec:
-  type: pubsub.rabbitmq
+  type: pubsub.redis
   version: v1
   metadata:
-    - name: host
-      value: "amqp://guest:guest@rabbitmq:5672"
-    - name: durable
-      value: "true"
-    - name: autoAck
-      value: "false"
-    - name: deliveryMode
-      value: "2"
-    - name: reconnectWait
-      value: "5s"
-    - name: concurrencyMode
-      value: "parallel"
+    - name: redisHost
+      value: localhost:6379
+    - name: redisPassword
+      value: ""
 scopes:
   - order-api
   - order-worker

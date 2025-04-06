@@ -19,6 +19,8 @@ else user does not exist
     accountsService->frontend: HTTP 400 Forbidden
 end
 ```
+
+
 #### Adding an order
 ```plantuml
 participant frontend
@@ -53,6 +55,8 @@ ordersService->ordersService: Updates the order with orderId, with the new item
 
 
 ```
+
+
 
 #### Submitting order and order processing
 ```plantuml

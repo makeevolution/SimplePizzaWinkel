@@ -55,6 +55,7 @@ builder.Services.AddSingleton<OrderPreparingEventHandler>();
 builder.Services.AddSingleton<OrderPrepCompleteEventHandler>();
 builder.Services.AddSingleton<OrderQualityCheckedEventHandler>();
 builder.Services.AddSingleton<PaymentFailedEventHandler>();
+builder.Services.AddSingleton<PaymentSuccessEventHandler>();
 builder.Services.AddSingleton<Idempotency, CachedIdempotencyService>();
 builder.Services.AddHostedService<OutboxWorker>();
 

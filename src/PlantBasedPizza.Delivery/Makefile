@@ -15,12 +15,12 @@ build-worker-arm:
 	docker build -f application/PlantBasedPizza.Delivery.Worker/Dockerfile -t delivery-worker ../
 
 tag-images:
-	docker tag delivery-api aldosebastian/plant-based-pizza-delivery-api:${IMAGE_TAG}
-	docker tag delivery-worker aldosebastian/plant-based-pizza-delivery-worker:${IMAGE_TAG}
+	docker tag delivery-api aldosebastian/simple-pizza-winkel-delivery-api:latest
+	docker tag delivery-worker aldosebastian/simple-pizza-winkel-delivery-worker:latest
 
 push:
-	docker push aldosebastian/plant-based-pizza-delivery-api:${IMAGE_TAG}
-	docker push aldosebastian/plant-based-pizza-delivery-worker:${IMAGE_TAG}
+	docker push aldosebastian/simple-pizza-winkel-delivery-api:latest
+	docker push aldosebastian/simple-pizza-winkel-delivery-worker:latest
 
 unit-test:
 	dotnet test tests/PlantBasedPizza.Delivery.UnitTests

@@ -4,35 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "d58e5d4b7522567b",
+        "id": "a5e3a5cdd2a9fe4e",
         "type": "tabs",
         "children": [
           {
-            "id": "36a2cb0078c9384c",
+            "id": "fec8a466b3018c78",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "docs/Use cases.md",
-                "mode": "source",
-                "source": false
+                "file": "docs/Excalidraw/Drawing 2024-12-23 09.28.39.excalidraw.md"
               },
-              "icon": "lucide-file",
-              "title": "Use cases"
-            }
-          },
-          {
-            "id": "4a7da9ac66778bc3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/Use cases.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Use cases"
+              "icon": "excalidraw-icon",
+              "title": "Drawing 2024-12-23 09.28.39.excalidraw"
             }
           }
         ]
@@ -183,20 +167,26 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "36a2cb0078c9384c",
+  "active": "fec8a466b3018c78",
   "lastOpenFiles": [
-    "docker-compose-services.yml~",
-    "docs/Use cases-2025-04-06-20-21-08.png",
-    "docs/Overview.md",
-    "src/PlantBasedPizza.Account/application/PlantBasedPizza.Account.Infrastructure/obj/e9dc2b6a-74c9-46e2-a023-0f58e389a60a.tmp",
-    "docs/Self notes.md",
+    "docs/Excalidraw/Drawing 2024-12-23 09.28.39.excalidraw.png",
     "docs/Use cases.md",
+    "docs/Use cases-2025-04-06-20-21-08.png",
+    "docs/Self notes.md",
+    "docs/Overview.md",
+    "Makefile~",
+    "deployment/nginx/nginx.conf",
+    "deployment/nginx",
+    "deployment/components",
+    "deployment/docker-compose-services-prd.yml",
+    "deployment/docker-compose-services-local.yml",
+    "deployment/docker-compose-infra.yml",
+    "deployment",
+    "docker-compose-infra.yml",
+    "docker-compose-services-local.yml",
+    "docs/Use cases-2025-04-07-09-43-09.png",
     "docs/Entities.md",
-    "SimplePizzaWinkel.sln.DotSettings.user",
-    "SimplePizzaWinkel.sln",
     "README.md",
-    "docs",
-    "build",
     "Excalidraw/Drawing 2024-12-23 09.28.39.excalidraw.md",
     "Excalidraw/Drawing 2024-12-23 09.28.39.excalidraw.png"
   ]

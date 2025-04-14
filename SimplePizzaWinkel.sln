@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{93B400D7-1E45-435D-935F-7DE6F032070A}"
 	ProjectSection(SolutionItems) = preProject
-		docker-compose.yml = docker-compose.yml
+		docker-compose-infra.yml = docker-compose-infra.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlantBasedPizza.Shared", "src\shared\PlantBasedPizza.Shared\PlantBasedPizza.Shared.csproj", "{179E35BF-4F04-4660-8F82-413DA572E7F4}"

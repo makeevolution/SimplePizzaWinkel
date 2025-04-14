@@ -5,10 +5,10 @@ build-arm:
 	docker build -f application/PlantBasedPizza.Payments/Dockerfile -t payment-api ../
 
 tag-images:
-	docker tag payment-api aldosebastian/plant-based-pizza-payment-api:${IMAGE_TAG}
+	docker tag payment-api aldosebastian/simple-pizza-winkel-payment-api:latest
 
 push:
-	docker push aldosebastian/plant-based-pizza-payment-api:${IMAGE_TAG}
+	docker push aldosebastian/simple-pizza-winkel-payment-api:latest
 
 unit-test:
 	dotnet test tests/PlantBasedPizza.Payments.UnitTests

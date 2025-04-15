@@ -7,7 +7,7 @@ This is my personal project, to apply my learnings about microservices that I ha
 
 The project is a pizza ordering system that allows users to order pizzas online. It consists of multiple microservices, each responsible for a specific part of the system. 
 
-The documentation is inside [docs](./docs/) and is generated using [MkDocs](https://www.mkdocs.org/).
+The documentation is inside [docs](./docs/)
 
 The project is built using .NET 9 and uses Dapr for service-to-service communication.
 ## What you need to run this project

@@ -14,9 +14,11 @@ The project is built using .NET 9 and uses Dapr for service-to-service communica
 ## Demo
 
 Main Flow, showing successful order processing
+
 https://github.com/user-attachments/assets/9be13b2c-4d1b-46c5-8d08-dd216cf6b649
 
 Exception flow, showing error in ordering, and how OpenTelemetry instrumentation makes it easy to figure out what's wrong!
+
 https://github.com/user-attachments/assets/670872d3-bc4b-4a52-881a-9440a523afcb
 
 

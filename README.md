@@ -35,7 +35,7 @@ https://github.com/user-attachments/assets/670872d3-bc4b-4a52-881a-9440a523afcb
 2. Run the project using `make run-local`
 3. Access the application 
 	1. Register a new user to begin using the system
-	2. Login: http://localhost:3000/login (Default admin credentials: admin@simplepizzawinkel.com / ppp)
+	2. Login: http://localhost:3000/login (Default admin credentials: admin@simplepizzawinkel.com / AdminAcc#99)
 
 ## Running Locally (pulled from Docker Hub)
 I also have published the images to Docker Hub, so you can run the project without building the images yourself.

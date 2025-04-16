@@ -25,8 +25,8 @@ https://github.com/user-attachments/assets/670872d3-bc4b-4a52-881a-9440a523afcb
 
 ## What you need to run this project
 
-- [.NET9](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
-- Docker client
+- [.NET9](https://dotnet.microsoft.com/en-us/download/dotnet/9.0) if you want to build locally (see below)
+- Docker
 - Make, by default installed on Linux distros
   - For Windows users, can use [Make](https://gnuwin32.sourceforge.net/packages/make.htm)
   - For MacOS, simply use `brew install make`

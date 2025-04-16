@@ -58,7 +58,7 @@ public class UserAccountRepository : IUserAccountRepository
     {
         try
         {
-            await CreateAccount(UserAccount.Create("admin@simplepizzawinkel.com", "AdminAccount!23", AccountType.Admin));
+            await CreateAccount(UserAccount.Create("admin@simplepizzawinkel.com", "AdminAcc#99", AccountType.Admin));
         }
         catch (UserExistsException)
         {

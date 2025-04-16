@@ -192,6 +192,8 @@ function KitchenDashboard() {
                         >
                           View
                         </Button>
+                      </td>
+                      <td>
                         <Button
                           onClick={() => {
                             prepComplete(order);
@@ -239,6 +241,8 @@ function KitchenDashboard() {
                         >
                           View
                         </Button>
+                      </td>
+                      <td>
                         <Button
                           onClick={() => {
                             bakeComplete(order);
@@ -286,6 +290,8 @@ function KitchenDashboard() {
                         >
                           View
                         </Button>
+                      </td>
+                      <td>
                         <Button
                           onClick={() => {
                             qualityChecked(order);

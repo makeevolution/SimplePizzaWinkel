@@ -1,5 +1,5 @@
 build:
-	docker build -f application/frontend/Dockerfile-x86 -t frontend ../
+	docker build -f Dockerfile -t frontend .
 
 tag-images:
 	docker tag frontend aldosebastian/simple-pizza-winkel-frontend:latest

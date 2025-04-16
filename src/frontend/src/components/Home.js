@@ -31,6 +31,52 @@ function Home() {
   const [snackbarOpen, setSnackbarOpen] = React.useState(false);
   const [snackbarContents, setSnackbarContents] = React.useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isScrollVisible, setIsScrollVisible] = useState(false);
+
+  useEffect(() => {
+    // Trigger the animation after the component mounts
+    setIsVisible(true);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const triggerPosition = 200; // Adjust this value as needed
+
+      if (scrollPosition > triggerPosition) {
+        setIsScrollVisible(true);
+      } else {
+        setIsScrollVisible(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const triggerPosition = 200; // Adjust this value as needed
+
+      if (scrollPosition > triggerPosition) {
+        setIsScrollVisible(true);
+      } else {
+        setIsScrollVisible(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []); 
+  
   const hub = new NotificationHub((message) => {
     console.log("Handling received message:", message);
     setSnackbarContents(message);
@@ -126,7 +172,7 @@ function Home() {
       setOrder(addItemResponse.data);
     } catch (error) {
       if (error.response.status === 401) {
-        setSnackbarContents(`Please login before creating an order`);
+        setSnackbarContents(`Login is required; please login first or create an account!`);
         setSnackbarOpen(true);
       }
     }
@@ -155,7 +201,9 @@ function Home() {
     <div>
       <Box sx={{ flexGrow: 1, marginBottom: 0, paddingBottom: 0 }}>
         <Box component="section" height={"100vh"} width={"100vw"}>
-          <Grid container spacing={2}>
+          <Grid container spacing={2} style={{opacity: isVisible ? 1 : 0,
+            transform: isVisible ? "translateY(0)" : "translateY(20px)",
+            transition: "opacity 1s ease, transform 1s ease"}}>
             <Grid
               xs={12}
               sm={9}
@@ -168,7 +216,7 @@ function Home() {
               <Typography
                   sx={{fontSize: "5rem", fontWeight: "700", lineHeight: "1", fontFamily: "Roboto"}}
               >
-                Simple Pizza winkel
+                Simple Pizza Winkel
                 <br/>
                 <br/>
                 Lekker pizza!
@@ -244,7 +292,9 @@ function Home() {
           <Grid container spacing={1}>
             <Grid item xs={1}></Grid>
             {isLoading === false ? (
-              <Grid item xs={10}>
+              <Grid item xs={10} style={{opacity: isScrollVisible ? 1 : 0,
+                transform: isScrollVisible ? "translateY(0)" : "translateY(20px)",
+                transition: "opacity 1s ease, transform 1s ease"}}>
                 {Object.keys(menuItems).map((category) => (
                   <div key={category}>
                     <Grid container spacing={4}>
@@ -272,7 +322,13 @@ function Home() {
                                 />
                               </AspectRatio>
                             </CardOverflow>
-                            <CardContent>
+                            <CardContent
+                            sx={{
+                              display: "flex",
+                              flexDirection: "row",
+                              alignItems: "center",
+                              justifyContent: "space-between",
+                            }}>
                               <Typography level="title-md">
                                 {item.name}
                               </Typography>
@@ -281,26 +337,23 @@ function Home() {
                               </Typography>
                             </CardContent>
                             <CardOverflow>
-                              <IconButton
+                              <Button
                                 variant="solid"
-                                color="success"
+                                color="primary"
                                 onClick={() => {
                                   addToOrder(item);
                                 }}
                                 sx={{
-                                  width: "70px",
-                                  height: "70px",
-                                  position: "absolute",
+                                  position: "relative",
                                   right: 0,
                                   bottom: 0,
-                                  borderRadius: "80px 0 0 0",
                                   zIndex: "100",
                                   paddingLeft: "15px",
                                   paddingTop: "10px",
                                 }}
                               >
                                 <Add />
-                              </IconButton>
+                              </Button>
                             </CardOverflow>
                           </Card>
                         </Grid>

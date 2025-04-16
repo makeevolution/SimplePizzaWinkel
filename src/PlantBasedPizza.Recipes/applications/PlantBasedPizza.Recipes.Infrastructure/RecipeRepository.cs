@@ -66,16 +66,21 @@ public class RecipeRepository : IRecipeRepository
 
     public async Task SeedRecipes()
     {
-        var marg = new Recipe(RecipeCategory.Pizza, "marg", "Margherita", 4.99M);
+
+        var pesto = new Recipe(RecipeCategory.Pizza, "pesto", "Pesto", 8.99M);
+        pesto.AddIngredient("Tomatoes", 1);
+        pesto.AddIngredient("Cheese", 6);
+        
+        var marg = new Recipe(RecipeCategory.Pizza, "margherita", "Margherita", 4.99M);
         marg.AddIngredient("Tomatoes", 1);
         marg.AddIngredient("Cheese", 6);
-
+        
         var pepperoni = new Recipe(RecipeCategory.Pizza, "pepperoni", "Pepperoni", 10.99M);
         pepperoni.AddIngredient("Tomatoes", 1);
         pepperoni.AddIngredient("Cheese", 6);
         pepperoni.AddIngredient("Pepperoni", 20);
         
-        var veggieDeluxe = new Recipe(RecipeCategory.Pizza, "veggie-deluxe", "Veggie Deluxe", 7.99M);
+        var veggieDeluxe = new Recipe(RecipeCategory.Pizza, "vegetarian", "Vegetarian", 7.99M);
         veggieDeluxe.AddIngredient("Tomatoes", 1);
         veggieDeluxe.AddIngredient("Cheese", 6);
         veggieDeluxe.AddIngredient("Mushroom", 6);
@@ -83,29 +88,30 @@ public class RecipeRepository : IRecipeRepository
         veggieDeluxe.AddIngredient("Green Peppers", 6);
         veggieDeluxe.AddIngredient("Olives", 12);
         
-        var chickAint = new Recipe(RecipeCategory.Pizza, "chick-aint", "Chick-Aint", 10.99M);
-        chickAint.AddIngredient("Tomatoes", 1);
-        chickAint.AddIngredient("Cheese", 6);
-        chickAint.AddIngredient("Chick-Aint", 12);
-        veggieDeluxe.AddIngredient("Red Peppers", 6);
+        var pineapple = new Recipe(RecipeCategory.Pizza, "pineapple", "Pineapple", 100.99M);
+        pineapple.AddIngredient("Tomatoes", 1);
+        pineapple.AddIngredient("Cheese", 6);
         
-        var spicy = new Recipe(RecipeCategory.Pizza, "spicy", "Spicy Veggie", 9.99M);
-        marg.AddIngredient("Tomatoes", 1);
-        marg.AddIngredient("Cheese", 6);
-        veggieDeluxe.AddIngredient("Mushroom", 6);
-        veggieDeluxe.AddIngredient("Jalapenos", 12);
+        var spicy = new Recipe(RecipeCategory.Pizza, "spicy-flaming-hot", "Spicy Flaming Hot", 9.99M);
+        spicy.AddIngredient("Tomatoes", 1);
+        spicy.AddIngredient("Cheese", 6);
 
         var fries = new Recipe(RecipeCategory.Sides, "fries", "Fries", 3.99M);
         fries.AddIngredient("Potatoes", 4);
         
+        var nuggets = new Recipe(RecipeCategory.Sides, "nuggets", "Nuggets", 5.99M);
+        nuggets.AddIngredient("Potatoes", 4);
+        
+        await Add(pesto);
         await Add(marg);
         await Add(pepperoni);
         await Add(veggieDeluxe);
-        await Add(chickAint);
+        await Add(pineapple);
         await Add(spicy);
         await Add(fries);
+        await Add(nuggets);
 
-        var softDrinks = new[] { "Beer", "Wine", "Gin", "Vodka" };
+        var softDrinks = new[] { "Beer", "Wine", "Gin", "Vodka", "Baileys", "Whiskey", "Rum", "Tequila", "Cider", "Soda" };
 
         foreach (var drink in softDrinks)
         {

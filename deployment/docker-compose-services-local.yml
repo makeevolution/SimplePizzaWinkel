@@ -231,7 +231,7 @@ services:
       - Messaging__UseAsyncApi=Y
       - Environment=local
       - Services__OrdersInternal=http://localhost:5101
-      - FAIL_PAYMENT=false
+      - FAIL_PAYMENT=true
       - DAPR_HOST=host.docker.internal
       - DAPR_GRPC_PORT=5101
     networks:

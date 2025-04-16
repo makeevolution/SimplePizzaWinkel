@@ -1,5 +1,5 @@
 // src/App.js
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import {
   Box,
@@ -52,10 +52,11 @@ function App() {
   return (
     <Sheet>
       <Router>
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ flexGrow: 1, bgcolor: "#FAEBD7"}}>
           <CssBaseline />
           <div
             style={{
+              backgroundColor: "#FAEBD7",
               position: "fixed",
               top: "20px",
               right: "20px",
@@ -89,10 +90,13 @@ function App() {
             <Route path="/admin/kitchen" element={<KitchenDashboard />} />
             <Route path="/admin/collection" element={<CollectionDashboard />} />
           </Routes>
-          <Box sx={{ bgcolor: "background.paper", pb: 4 }} component="footer">
+          <Box sx={{
+            bgcolor: "#FAEBD7", 
+            pb: 4,
+          }} component="footer">
             <Container maxWidth="lg">
               <Typography variant="h6" align="center" gutterBottom>
-                Simple Pizza winkel
+                Simple Pizza Winkel
               </Typography>
               <Typography
                 variant="subtitle1"
@@ -100,7 +104,7 @@ function App() {
                 color="text.secondary"
                 component="p"
               >
-                Lekker pizza; snel gemaakt; smaakt goed
+                This is my simple microservices project to experiment and apply my on-the-job learnings.
               </Typography>
               <Box sx={{ mt: 2, display: "flex", justifyContent: "center" }}>
                 <Link href="https://www.aldosebastian.com" variant="body2" sx={{ mx: 2 }}>

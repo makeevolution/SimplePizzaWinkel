@@ -10,6 +10,13 @@ The project is a pizza ordering system that allows users to order pizzas online.
 The documentation is inside [docs](./docs/)
 
 The project is built using .NET 9 and uses Dapr for service-to-service communication.
+
+## Demo
+
+
+https://github.com/user-attachments/assets/9be13b2c-4d1b-46c5-8d08-dd216cf6b649
+
+
 ## What you need to run this project
 
 - [.NET9](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)

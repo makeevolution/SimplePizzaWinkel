@@ -27,7 +27,9 @@ https://github.com/user-attachments/assets/670872d3-bc4b-4a52-881a-9440a523afcb
 
 - [.NET9](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
 - Docker client
-- Make
+- Make, by default installed on Linux distros
+  - For Windows users, can use [Make](https://gnuwin32.sourceforge.net/packages/make.htm)
+  - For MacOS, simply use `brew install make`
 
 ## Running Locally (local build)
 0. Go to the root of the project, ensure you have Docker running and Make installed

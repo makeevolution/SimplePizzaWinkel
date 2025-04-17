@@ -9,7 +9,10 @@ The project is a pizza ordering system that allows users to order pizzas online.
 
 The documentation is inside [docs](./docs/)
 
-The project is built using .NET 9 and uses Dapr for service-to-service communication.
+The project is:
+- Built using .NET 9
+- Uses event driven architecture for communication between microservices
+- Fully instrumented using OpenTelemetry
 
 ## Demo
 
